@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.Cases">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="sljsdw" jdbcType="VARCHAR" property="sljsdw" />
+		<result column="ajstate" jdbcType="VARCHAR" property="ajstate" />
+		<result column="bdajstate" jdbcType="VARCHAR" property="bdajstate" />
+		<result column="zazt" jdbcType="VARCHAR" property="zazt" />
+		<result column="sl_bjslh" jdbcType="VARCHAR" property="slBjslh" />
+		<result column="sl_jjfs" jdbcType="VARCHAR" property="slJjfs" />
+		<result column="ajlx" jdbcType="VARCHAR" property="ajlx" />
+		<result column="ab" jdbcType="VARCHAR" property="ab" />
+		<result column="zabz" jdbcType="VARCHAR" property="zabz" />
+		<result column="ajmc" jdbcType="VARCHAR" property="ajmc" />
+		<result column="ajwh" jdbcType="VARCHAR" property="ajwh" />
+		<result column="sljjsj" jdbcType="TIMESTAMP" property="sljjsj" />
+		<result column="slfxrq" jdbcType="TIMESTAMP" property="slfxrq" />
+		<result column="fasjcz" jdbcType="TIMESTAMP" property="fasjcz" />
+		<result column="fasjzz" jdbcType="TIMESTAMP" property="fasjzz" />
+		<result column="fadd_qx" jdbcType="VARCHAR" property="faddQx" />
+		<result column="fadd_jd" jdbcType="VARCHAR" property="faddJd" />
+		<result column="ajssjq" jdbcType="VARCHAR" property="ajssjq" />
+		<result column="fadd" jdbcType="VARCHAR" property="fadd" />
+		<result column="sssq" jdbcType="VARCHAR" property="sssq" />
+		<result column="fady" jdbcType="VARCHAR" property="fady" />
+		<result column="slfacs" jdbcType="VARCHAR" property="slfacs" />
+		<result column="fxxs" jdbcType="VARCHAR" property="fxxs" />
+		<result column="ajwhcd" jdbcType="VARCHAR" property="ajwhcd" />
+		<result column="blyy" jdbcType="VARCHAR" property="blyy" />
+		<result column="zyaq" jdbcType="VARCHAR" property="zyaq" />
+		<result column="xzsj" jdbcType="VARCHAR" property="xzsj" />
+		<result column="xzcs" jdbcType="VARCHAR" property="xzcs" />
+		<result column="xzdx" jdbcType="VARCHAR" property="xzdx" />
+		<result column="xzwp" jdbcType="VARCHAR" property="xzwp" />
+		<result column="zagj" jdbcType="VARCHAR" property="zagj" />
+		<result column="xzbw" jdbcType="VARCHAR" property="xzbw" />
+		<result column="zars" jdbcType="VARCHAR" property="zars" />
+		<result column="sdtd" jdbcType="VARCHAR" property="sdtd" />
+		<result column="swrs" jdbcType="VARCHAR" property="swrs" />
+		<result column="ssrs" jdbcType="VARCHAR" property="ssrs" />
+		<result column="ssjz" jdbcType="VARCHAR" property="ssjz" />
+		<result column="sazz" jdbcType="VARCHAR" property="sazz" />
+		<result column="lasj" jdbcType="TIMESTAMP" property="lasj" />
+		<result column="pasj" jdbcType="TIMESTAMP" property="pasj" />
+		<result column="ja_jasj" jdbcType="TIMESTAMP" property="jaJasj" />
+		<result column="xa_xasj" jdbcType="TIMESTAMP" property="xaXasj" />
+		<result column="yssj" jdbcType="TIMESTAMP" property="yssj" />
+		<result column="sljjdw" jdbcType="VARCHAR" property="sljjdw" />
+		<result column="sl_lrr" jdbcType="VARCHAR" property="slLrr" />
+		<result column="sl_lrsj" jdbcType="TIMESTAMP" property="slLrsj" />
+		<result column="sljjry" jdbcType="VARCHAR" property="sljjry" />
+		<result column="sl_slrxm" jdbcType="VARCHAR" property="slSlrxm" />
+		<result column="sl_slsj" jdbcType="TIMESTAMP" property="slSlsj" />
+		<result column="slfaqh" jdbcType="VARCHAR" property="slfaqh" />
+		<result column="ladw" jdbcType="VARCHAR" property="ladw" />
+		<result column="ajlary" jdbcType="VARCHAR" property="ajlary" />
+		<result column="zbdw" jdbcType="VARCHAR" property="zbdw" />
+		<result column="ajzbry" jdbcType="VARCHAR" property="ajzbry" />
+		<result column="ajxbry" jdbcType="VARCHAR" property="ajxbry" />
+		<result column="ajbarp" jdbcType="VARCHAR" property="ajbarp" />
+		<result column="la_lrr" jdbcType="VARCHAR" property="laLrr" />
+		<result column="la_lrsj" jdbcType="TIMESTAMP" property="laLrsj" />
+		<result column="la_pzr" jdbcType="VARCHAR" property="laPzr" />
+		<result column="la_pzsj" jdbcType="TIMESTAMP" property="laPzsj" />
+		<result column="la_zhxgr" jdbcType="VARCHAR" property="laZhxgr" />
+		<result column="la_zhxgsj" jdbcType="TIMESTAMP" property="laZhxgsj" />
+		<result column="la_psstate" jdbcType="VARCHAR" property="laPsstate" />
+		<result column="dbxx" jdbcType="VARCHAR" property="dbxx" />
+		<result column="ajly" jdbcType="VARCHAR" property="ajly" />
+		<result column="bz" jdbcType="VARCHAR" property="bz" />
+		<result column="departmentcode" jdbcType="VARCHAR" property="departmentcode" />
+		<result column="creator" jdbcType="VARCHAR" property="creator" />
+		<result column="createdtime" jdbcType="TIMESTAMP" property="createdtime" />
+		<result column="securitygrade" jdbcType="VARCHAR" property="securitygrade" />
+		<result column="lastupdatedtime" jdbcType="TIMESTAMP" property="lastupdatedtime" />
+		<result column="refreshtime" jdbcType="TIMESTAMP" property="refreshtime" />
+		<result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+		<result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+		<result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+		<result column="ysdw" jdbcType="VARCHAR" property="ysdw" />
+		<result column="yscbr" jdbcType="VARCHAR" property="yscbr" />
+		<result column="ysdwdh" jdbcType="VARCHAR" property="ysdwdh" />
+		<result column="yssasj" jdbcType="TIMESTAMP" property="yssasj" />
+		<result column="ystcsj" jdbcType="TIMESTAMP" property="ystcsj" />
+		<result column="whssjz" jdbcType="VARCHAR" property="whssjz" />
+		<result column="dbjb" jdbcType="VARCHAR" property="dbjb" />
+		<result column="jtajly" jdbcType="VARCHAR" property="jtajly" />
+		<result column="fzztlx" jdbcType="VARCHAR" property="fzztlx" />
+		<result column="sfsw" jdbcType="VARCHAR" property="sfsw" />
+		<result column="sjgjdq" jdbcType="VARCHAR" property="sjgjdq" />
+		<result column="yishensj" jdbcType="TIMESTAMP" property="yishensj" />
+		<result column="essj" jdbcType="TIMESTAMP" property="essj" />
+		<result column="ysdw_new" jdbcType="VARCHAR" property="ysdwNew" />
+		<result column="ysdwdh_new" jdbcType="VARCHAR" property="ysdwdhNew" />
+		<result column="yscbr_new" jdbcType="VARCHAR" property="yscbrNew" />
+		<result column="yssj_new" jdbcType="TIMESTAMP" property="yssjNew" />
+		<result column="datastate" jdbcType="VARCHAR" property="datastate" />
+		<result column="datacheck" jdbcType="VARCHAR" property="datacheck" />
+		<result column="queryid" jdbcType="VARCHAR" property="queryid" />
+		<result column="jzbh" jdbcType="VARCHAR" property="jzbh" />
+		<result column="rkdjsj" jdbcType="TIMESTAMP" property="rkdjsj" />
+		<result column="rkgxsj" jdbcType="TIMESTAMP" property="rkgxsj" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="lrry" jdbcType="INTEGER" property="lrry" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<result column="xgry" jdbcType="INTEGER" property="xgry" />
+		<result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+		<result column="mind_top" jdbcType="VARCHAR" property="mindTop" />
+		<result column="mind_left" jdbcType="VARCHAR" property="mindLeft" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, ajbh, sljsdw, ajstate, bdajstate, zazt, sl_bjslh, sl_jjfs, ajlx, ab, zabz,
+		ajmc, ajwh, sljjsj,
+		slfxrq, fasjcz, fasjzz, fadd_qx, fadd_jd, ajssjq,
+		fadd, sssq, fady, slfacs,
+		fxxs,
+		ajwhcd, blyy, zyaq, xzsj, xzcs, xzdx,
+		xzwp, zagj, xzbw, zars, sdtd, swrs,
+		ssrs, ssjz,
+		sazz, lasj, pasj,
+		ja_jasj, xa_xasj, yssj, sljjdw, sl_lrr, sl_lrsj, sljjry,
+		sl_slrxm,
+		sl_slsj, slfaqh, ladw, ajlary, zbdw, ajzbry, ajxbry, ajbarp, la_lrr,
+		la_lrsj,
+		la_pzr,
+		la_pzsj, la_zhxgr, la_zhxgsj, la_psstate, dbxx, ajly,
+		bz, departmentcode,
+		creator,
+		createdtime, securitygrade,
+		lastupdatedtime, refreshtime, uploadflag,
+		downloadflag,
+		deleteflag,
+		ysdw, yscbr, ysdwdh, yssasj, ystcsj, whssjz, dbjb, jtajly, fzztlx,
+		sfsw,
+		sjgjdq, yishensj, essj, ysdw_new, ysdwdh_new, yscbr_new,
+		yssj_new, datastate,
+		datacheck,
+		queryid, jzbh, rkdjsj, rkgxsj, smbz,
+		lrry, lrrymc, lrsj, xgry, xgsj, mind_top, mind_left
+	</sql>
+
+	<select id="selectCaseByCreateTime" resultMap="BaseResultMap" >
+		select 
+		<include refid="Base_Column_List"/>
+		from t_asj_aj 
+		<where>
+			<if test="beginCreateTime != null and !beginCreateTime.equals('') and endCreateTime != null and !endCreateTime.equals('')">
+				<![CDATA[
+					sl_lrsj >= STR_TO_DATE(#{beginCreateTime},'%Y-%m-%d %H:%i:%s') 
+					and sl_lrsj <= STR_TO_DATE(#{endCreateTime},'%Y-%m-%d %H:%i:%s')
+	  			]]>
+			</if>
+			<if test="beginCreateTime != null and !beginCreateTime.equals('') and endCreateTime == null or endCreateTime.equals('')">
+				<![CDATA[
+					sl_lrsj >= STR_TO_DATE(#{beginCreateTime},'%Y-%m-%d %H:%i:%s')
+	  			]]>
+			</if>
+			<if test="endCreateTime != null and !endCreateTime.equals('') and beginCreateTime == null or beginCreateTime.equals('')">
+				<![CDATA[
+					sl_lrsj <= STR_TO_DATE(#{endCreateTime},'%Y-%m-%d %H:%i:%s')
+	  			]]>
+			</if>
+		</where>
+	</select>
+	
+	<select id="listCaseLocal" resultMap="BaseResultMap" >
+		<!-- 案件主办 -->
+		<bind name="CASE_SELF" value="@com.hyzs.cidyth.common.enums.CaseSponsorEnum@CASE_SELF.name()" />
+		<bind name="CASE_ASSIST" value="@com.hyzs.cidyth.common.enums.CaseSponsorEnum@CASE_ASSIST.name()" />
+		<bind name="YES" value="@com.hyzs.cidyth.common.enums.YesNoEnum@YES.name()" />
+		<bind name="SIGNED" value="@com.hyzs.cidyth.common.enums.AnalysisNodeEnum@SIGNED.name()" />
+		<bind name="WAIT_ALLOCATE" value="@com.hyzs.cidyth.common.enums.AnalysisNodeEnum@WAIT_ALLOCATE.name()" />
+
+		select
+		<include refid="Base_Column_List"/>
+		from t_asj_aj 
+		<where>
+			<if test="sljsdw != null and !sljsdw.equals('')">
+				(
+					sljsdw like concat(#{sljsdw}, '%')
+					or
+					ajbh in (select ajbh from t_case_group where jybh = #{jybh})
+				)
+			</if>
+			<if test="beginLasj != null and !beginLasj.equals('') and endLasj != null and !endLasj.equals('')">
+				<![CDATA[
+					and lasj >= STR_TO_DATE(#{beginLasj},'%Y-%m-%d %H:%i:%s')
+					and lasj <= STR_TO_DATE(#{endLasj},'%Y-%m-%d %H:%i:%s')
+	  			]]>
+			</if>
+			<if test="fasjcz != null and !fasjcz.equals('') and fasjzz != null and !fasjzz.equals('')">
+				<![CDATA[
+					and fasjcz >= STR_TO_DATE(#{fasjcz},'%Y-%m-%d %H:%i:%s')
+					and fasjcz <= STR_TO_DATE(#{fasjzz},'%Y-%m-%d %H:%i:%s')
+	  			]]>
+			</if>
+			<if test="ajbh != null and !ajbh.equals('')">
+				and ajbh like concat('%', #{ajbh}, '%')
+			</if>
+			<if test="ajmc != null and !ajmc.equals('')">
+				and ajmc like concat('%', #{ajmc}, '%')
+			</if>
+			<!-- 本地案件状态 -->
+			<if test="bdajstate != null and !bdajstate.equals('')">
+				and bdajstate = #{bdajstate}
+			</if>
+			<if test="zyaq != null and !zyaq.equals('')">
+				and zyaq like concat('%', #{zyaq}, '%')
+			</if>
+			<if test="ajzbry != null and !ajzbry.equals('')">
+				and ajzbry = #{ajzbry}
+			</if>
+			<if test="ajxbry != null and !ajxbry.equals('')">
+				and (FIND_IN_SET(#{ajxbry}, ajxbry))
+			</if>
+			<if test="lrry != null and !lrry.equals('')">
+				and lrry = #{lrry}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectMonthlyCaseOfDept" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select month(STR_TO_DATE(lasj,'%Y-%m-%d %H:%i:%s')) ab,ajbh,sljsdw
+		from t_asj_aj 
+		<trim prefix="where" prefixOverrides="and">
+			<if test="year != null">
+				and YEAR(STR_TO_DATE(lasj,'%Y-%m-%d %H:%i:%s')) = #{year}
+			</if>
+			<if test="monthList != null and monthList.size()>0">
+				and MONTH(STR_TO_DATE(lasj,'%Y-%m-%d %H:%i:%s')) in 
+				<foreach collection="monthList" item="month" open="(" separator="," close=")">
+					#{month}
+				</foreach>
+			</if>
+			<if test="deptIdList != null and deptIdList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="deptIdList" item="deptId">
+						or sljsdw in (#{deptId,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+		</trim>
+		order by lasj
+	</select>
+	
+	<select id="countGroupByBdajstate" resultType="String">
+		select concat(bdajstate, ',' ,count(*)) from t_asj_aj group by bdajstate
+	</select>	
+	
+	<update id="updateBdajstateByAjbh">
+		update t_asj_aj set bdajstate = #{bdajstate}, bdajstatebz = #{bdajstatebz} where ajbh = #{ajbh}
+	</update>
+
+	<select id="listCasesByCbabh" resultMap="BaseResultMap">
+		select * from t_asj_aj where cbabh = #{cbabh}
+	</select>
+
+	<update id="casesCheck">
+		update t_asj_aj set
+			check_person = #{checkPerson},
+			check_status = #{checkStatus},
+			check_result = #{checkResult}
+		where ajbh = #{ajbh}
+	</update>
+	
+	<select id="selectLatestLasj" resultType="java.util.Date">
+		SELECT MAX(STR_TO_DATE(lasj,'%Y-%m-%d %H:%i:%s')) FROM t_asj_aj WHERE lasj IS NOT NULL
+	</select>
+
+	<select id="listCasesByMonth" resultMap="BaseResultMap">
+		select * from t_asj_aj where ajbh in (
+			select distinct ajbh from t_case_group
+			<where>
+				<if test="jybh != null and !jybh.equals('')">and jybh = #{jybh}</if>
+				<if test="beginTime != null and endTime != null">and lrsj between STR_TO_DATE(#{beginTime},'%Y-%m-%d %H:%i:%s') and STR_TO_DATE(#{endTime},'%Y-%m-%d %H:%i:%s')</if>
+			</where>
+		)
+	</select>
+
+	<select id="getMaxAjbhByYearMonth" resultType="String">
+		select max(ajbh) from t_asj_aj where ajbh like concat(#{prefixCode}, '%')
+	</select>
+
+	<select id="helpFinish" resultType="Integer">
+		<bind name="FINISH" value="@com.hyzs.cidyth.common.enums.CaseStateEnum@FINISH.code()" />
+		select count(*) from t_asj_aj where ajbh in (
+			select distinct ajbh from t_case_partner where jybh = #{jybh}
+		) and bdajstate = #{FINISH}
+	</select>
+
+	<update id="addCoordinator">
+		update t_asj_aj set ajxbry = concat(ajxbry, ',', #{ajxbry}) where ajbh = #{ajbh}
+	</update>
+
+	<select id="branchInvestigate" resultType="Map">
+		select prefix_code, count(ajbh) pick_case, sum(bdajstate) finish_case, sum(demand_count+clue_count+info_count) investigate from (
+			SELECT
+				substr(aj.sljsdw, 1, 6) prefix_code,
+				aj.ajbh,
+				(CASE WHEN aj.bdajstate = 2 THEN 1 ELSE 0 END) bdajstate,
+				(select count(*) from t_demand where ajbh = aj.ajbh) demand_count,
+				(select count(*) from t_clue where ajbh = aj.ajbh) clue_count,
+				(select count(*) from t_info where ajbh = aj.ajbh) info_count
+			FROM
+				t_asj_aj aj
+		<where>
+			<if test="kssj != null and kssj != '' and jssj != null and jssj != ''">
+				and lrsj between #{kssj} and #{jssj}
+			</if>
+		</where>
+		) t group by prefix_code
+	</select>
+
+	<select id="listLocalAjbh" resultType="String">
+		select ajbh from t_asj_aj where aj_from = 2
+	</select>
+
+	<select id="listXK" resultType="Map">
+		select
+			aj.ajbh,
+			(
+				select count(*) from t_xk_zjhj where ajbh = aj.ajbh
+				<if test="kssj != null and kssj != '' and jssj != null and jssj != ''">
+					and lrsj between #{kssj} and #{jssj}
+				</if>
+			) 'zj_count_local',
+			(
+				select count(*) from t_xk_syhj where ajbh = aj.ajbh
+				<if test="kssj != null and kssj != '' and jssj != null and jssj != ''">
+					and lrsj between #{kssj} and #{jssj}
+				</if>
+			) 'sy_count_local',
+			(
+				select count(*) from t_xk_swhj where ajbh = aj.ajbh
+				<if test="kssj != null and kssj != '' and jssj != null and jssj != ''">
+					and lrsj between #{kssj} and #{jssj}
+				</if>
+			) 'sw_count_local'
+		from
+			t_asj_aj aj
+	</select>
+</mapper>

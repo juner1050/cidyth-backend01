@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.TechnologyCompareCidMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.TechnologyCompare">
+	  	<!--
+		WARNING - @mbg.generated
+		-->
+		<result column="bzly" property="bzly" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="jqbh" property="jqbh" jdbcType="VARCHAR" />
+		<result column="ajbh" property="ajbh" jdbcType="VARCHAR" />
+		<result column="xkbh" property="xkbh" jdbcType="VARCHAR" />
+		<result column="ajlb" property="ajlb" jdbcType="VARCHAR" />
+		<result column="afsj" property="afsj" jdbcType="VARCHAR" />
+		<result column="afdd" property="afdd" jdbcType="VARCHAR" />
+		<result column="jyaq" property="jyaq" jdbcType="VARCHAR" />
+		<result column="rybh" property="rybh" jdbcType="VARCHAR" />
+		<result column="rywzbh" property="rywzbh" jdbcType="VARCHAR" />
+		<result column="xm" property="xm" jdbcType="VARCHAR" />
+		<result column="sfzh" property="sfzh" jdbcType="VARCHAR" />
+		<result column="hjd" property="hjd" jdbcType="VARCHAR" />
+	 </resultMap>
+  
+	<select id="selectByPager" resultMap="BaseResultMap" parameterType="java.util.Map">
+		   select 
+		   	   lt.CREATE_DATE,
+		       lt.bzly,
+		       jzaj.jqbh,
+		       jzaj.ajbh,
+		       jzaj.xkbh,
+		       cases.AJLB,
+		       lt.AFSJ1 AFSJ,
+		       lt.AFDD1 AFDD,
+		       (select JYAQ from yppt.v_cba_case_4403 where case_n = jzaj.ajbh) JYAQ,
+		       lt.rybh,
+		       lt.rywzbh,
+		       lt.xm,
+		       lt.sfzh,
+		       lt.hjd
+		  from (select dybz.CREATE_DATE,
+		  			   dybz.xchjbh1,
+		               dybz.AJBH1,
+		               dybz.AFSJ1,
+		               dybz.AFDD1,
+		               dybz.JYAQ1,
+		               xxbz.SOURCE bzly,
+		               dybz.rybh,
+		               dybz.rywzbh,
+		               dybz.xm,
+		               dybz.sfzh,
+		               dybz.hjd
+		          from yppt.v_hjwz_dybz_4403 dybz
+		         inner join yppt.v_cba_xxbz_4403 xxbz
+		            on dybz.ajbh1 = xxbz.CASE_N
+		           and dybz.rybh = xxbz.RYBH
+		           and dybz.xchjbh1 = xxbz.XC_NO
+		         where 1 = 1
+		           	<!-- 比中时间 -->
+					<if test="startBzsj != null and !startBzsj.equals('') and endBzsj != null and !endBzsj.equals('')">
+						and dybz.CREATE_DATE between to_date(#{startBzsj},'yyyy-MM-dd HH24:MI:ss') and to_date(#{endBzsj},'yyyy-MM-dd HH24:MI:ss')
+					</if>
+					<if test="startBzsj != null and !startBzsj.equals('') and (endBzsj == null or endBzsj.equals(''))">
+						<![CDATA[
+							and dybz.CREATE_DATE >= to_date(#{startBzsj},'yyyy-MM-dd HH24:MI:ss')
+						]]>
+					</if>
+					<if test="(startBzsj == null or startBzsj.equals('')) and endBzsj != null and !endBzsj.equals('')">
+						<![CDATA[
+							and dybz.CREATE_DATE <= to_date(#{endBzsj},'yyyy-MM-dd HH24:MI:ss')
+						]]>
+					</if>
+					<!-- 案发时间 -->
+					<if test="startAfsj != null and !startAfsj.equals('') and endAfsj != null and !endAfsj.equals('')">
+						and (to_date(dybz.AFSJ1,'yyyy-MM-dd HH24:MI:ss') between to_date(#{startAfsj},'yyyy-MM-dd HH24:MI:ss') and to_date(#{endAfsj},'yyyy-MM-dd HH24:MI:ss') )
+					</if>
+					<if test="startAfsj != null and !startAfsj.equals('') and (endAfsj == null or endAfsj.equals(''))">
+						<![CDATA[
+							and (to_date(dybz.AFSJ1,'yyyy-MM-dd HH24:MI:ss') >= to_date(#{startAfsj},'yyyy-MM-dd HH24:MI:ss'))
+						]]>
+					</if>
+					<if test="(startAfsj == null or startAfsj.equals('')) and endAfsj != null and !endAfsj.equals('')">
+						<![CDATA[
+							and (to_date(dybz.AFSJ1,'yyyy-MM-dd HH24:MI:ss') <= to_date(#{endAfsj},'yyyy-MM-dd HH24:MI:ss'))
+						]]>
+					</if>
+		           <!-- 涉案人员姓名 -->
+					<if test="saryxm != null and !saryxm.equals('')">
+						<![CDATA[and INSTR(dybz.xm,#{saryxm}) > 1]]>
+					</if>
+		           	<!-- 涉案人员身份证号 -->
+					<if test="sarysfz != null and !sarysfz.equals('')">
+						<![CDATA[and INSTR(dybz.sfzh,#{sarysfz}) > 1]]>
+					</if>
+					<!-- 比中来源 -->
+					<if test="bzly != null and !bzly.equals('')">
+		           		and xxbz.SOURCE = #{bzly}
+		           	</if>
+		           	) lt
+		  left join yppt.v_cba_case_4403 cases
+		    on lt.ajbh1 = cases.CASE_N
+		 left join yppt.v_jzaj jzaj
+		    on jzaj.ajbh = cases.CASE_N
+		   	<!-- 编号(警情/案件/物证编号) -->
+			<if test="bh != null and !bh.equals('')">
+				and (jzaj.jqbh = #{bh} or cases.CASE_N = #{bh} or lt.xchjbh1 = #{bh})
+			</if>
+			<!-- 案件类别 -->
+			<if test="ajlb != null and !ajlb.equals('')">
+				and cases.AJLB = #{ajlb}
+			</if>
+			<!-- 受理单位代码 -->
+			<if test="sldwdm != null and !sldwdm.equals('')">
+				and cases.LADWDM = #{sldwdm}
+			</if>
+			<!-- (案件状态)是否破案 -->
+			<if test="pazt != null and !pazt.equals('')">
+				and cases.IF_PA = #{pazt}
+			</if>
+			<!-- 关联案件状态 -->
+			<if test="glajzt != null and !glajzt.equals('')">
+				<!-- 未关联 -->
+				<if test="glajzt.equals('0')">
+					and lt.AJBH1 is null
+				</if>
+				<if test="glajzt.equals('1')">
+					and lt.AJBH1 is not null
+				</if>
+			</if>
+	</select>
+	
+	<select id="selectByAjbh" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+			   lt.CREATE_DATE,
+			   lt.bzly,
+			   jzaj.jqbh,
+			   jzaj.ajbh,
+			   jzaj.xkbh,
+			   cases.AJLB,
+			   lt.AFSJ1 AFSJ,
+			   lt.AFDD1 AFDD,
+			   (select JYAQ from yppt.v_cba_case_4403 where case_n = jzaj.ajbh) JYAQ,
+			   lt.rybh,
+			   lt.rywzbh,
+			   lt.xm,
+			   lt.sfzh,
+			   lt.hjd
+		  from (select dybz.CREATE_DATE,
+					   dybz.xchjbh1,
+					   dybz.AJBH1,
+					   dybz.AFSJ1,
+					   dybz.AFDD1,
+					   dybz.JYAQ1,
+					   xxbz.SOURCE bzly,
+					   dybz.rybh,
+					   dybz.rywzbh,
+					   dybz.xm,
+					   dybz.sfzh,
+					   dybz.hjd
+				  from yppt.v_hjwz_dybz_4403 dybz
+				 inner join yppt.v_cba_xxbz_4403 xxbz
+					on dybz.ajbh1 = xxbz.CASE_N
+				   and dybz.rybh = xxbz.RYBH
+				   and dybz.xchjbh1 = xxbz.XC_NO
+				 where 1 = 1) lt
+		   left join yppt.v_cba_case_4403 cases
+				on lt.ajbh1 = cases.CASE_N
+			 left join yppt.v_jzaj jzaj
+				on jzaj.ajbh = cases.CASE_N
+			and cases.CASE_N = #{ajbh}
+			where jzaj.ajbh is not null
+	</select>
+
+</mapper>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesLawBookMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.CasesLawBook">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="writid" jdbcType="VARCHAR" property="writid" />
+    <result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+    <result column="ajmc" jdbcType="VARCHAR" property="ajmc" />
+    <result column="ajwh" jdbcType="VARCHAR" property="ajwh" />
+    <result column="ajlx" jdbcType="VARCHAR" property="ajlx" />
+    <result column="writefor" jdbcType="VARCHAR" property="writefor" />
+    <result column="dxbh" jdbcType="VARCHAR" property="dxbh" />
+    <result column="wscode" jdbcType="VARCHAR" property="wscode" />
+    <result column="wsmc" jdbcType="VARCHAR" property="wsmc" />
+    <result column="wordofwrit" jdbcType="VARCHAR" property="wordofwrit" />
+    <result column="yearofwrit" jdbcType="VARCHAR" property="yearofwrit" />
+    <result column="markofwrit" jdbcType="VARCHAR" property="markofwrit" />
+    <result column="wordofwrit2" jdbcType="VARCHAR" property="wordofwrit2" />
+    <result column="yearofwrit2" jdbcType="VARCHAR" property="yearofwrit2" />
+    <result column="markofwrit2" jdbcType="VARCHAR" property="markofwrit2" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="superwritid" jdbcType="VARCHAR" property="superwritid" />
+    <result column="beginhappentime" jdbcType="VARCHAR" property="beginhappentime" />
+    <result column="endhappentime" jdbcType="VARCHAR" property="endhappentime" />
+    <result column="transact" jdbcType="VARCHAR" property="transact" />
+    <result column="submitnote" jdbcType="VARCHAR" property="submitnote" />
+    <result column="lawname" jdbcType="VARCHAR" property="lawname" />
+    <result column="itemoflaw" jdbcType="VARCHAR" property="itemoflaw" />
+    <result column="analysisinlaw" jdbcType="VARCHAR" property="analysisinlaw" />
+    <result column="returnwritdate" jdbcType="VARCHAR" property="returnwritdate" />
+    <result column="bookoffile" jdbcType="VARCHAR" property="bookoffile" />
+    <result column="pageoffile" jdbcType="VARCHAR" property="pageoffile" />
+    <result column="pageofreinforce" jdbcType="VARCHAR" property="pageofreinforce" />
+    <result column="epilog" jdbcType="VARCHAR" property="epilog" />
+    <result column="transactprimarytout" jdbcType="VARCHAR" property="transactprimarytout" />
+    <result column="transactunit" jdbcType="VARCHAR" property="transactunit" />
+    <result column="badwlxdh" jdbcType="VARCHAR" property="badwlxdh" />
+    <result column="submittime" jdbcType="VARCHAR" property="submittime" />
+    <result column="confirmnote" jdbcType="VARCHAR" property="confirmnote" />
+    <result column="wsdqhj" jdbcType="VARCHAR" property="wsdqhj" />
+    <result column="wsdqzt" jdbcType="VARCHAR" property="wsdqzt" />
+    <result column="confirmbyperson" jdbcType="VARCHAR" property="confirmbyperson" />
+    <result column="confirmbyunit" jdbcType="VARCHAR" property="confirmbyunit" />
+    <result column="confirmtime" jdbcType="VARCHAR" property="confirmtime" />
+    <result column="writetime" jdbcType="VARCHAR" property="writetime" />
+    <result column="writeby" jdbcType="VARCHAR" property="writeby" />
+    <result column="receiveunit" jdbcType="VARCHAR" property="receiveunit" />
+    <result column="tosomebody" jdbcType="VARCHAR" property="tosomebody" />
+    <result column="receiveby" jdbcType="VARCHAR" property="receiveby" />
+    <result column="receivetime" jdbcType="VARCHAR" property="receivetime" />
+    <result column="oldbriefreason" jdbcType="VARCHAR" property="oldbriefreason" />
+    <result column="briefreason" jdbcType="VARCHAR" property="briefreason" />
+    <result column="detailreason" jdbcType="VARCHAR" property="detailreason" />
+    <result column="dwmc" jdbcType="VARCHAR" property="dwmc" />
+    <result column="xxdzms" jdbcType="VARCHAR" property="xxdzms" />
+    <result column="frdb" jdbcType="VARCHAR" property="frdb" />
+    <result column="zwxm" jdbcType="VARCHAR" property="zwxm" />
+    <result column="cym" jdbcType="VARCHAR" property="cym" />
+    <result column="byname" jdbcType="VARCHAR" property="byname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="ywx" jdbcType="VARCHAR" property="ywx" />
+    <result column="ywm" jdbcType="VARCHAR" property="ywm" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="nationlity" jdbcType="VARCHAR" property="nationlity" />
+    <result column="nativeplace" jdbcType="VARCHAR" property="nativeplace" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="birthdayinbegin" jdbcType="VARCHAR" property="birthdayinbegin" />
+    <result column="birthdayinend" jdbcType="VARCHAR" property="birthdayinend" />
+    <result column="cardtype" jdbcType="VARCHAR" property="cardtype" />
+    <result column="zjhm" jdbcType="VARCHAR" property="zjhm" />
+    <result column="hyzk" jdbcType="VARCHAR" property="hyzk" />
+    <result column="culture" jdbcType="VARCHAR" property="culture" />
+    <result column="sf" jdbcType="VARCHAR" property="sf" />
+    <result column="specialdegree" jdbcType="VARCHAR" property="specialdegree" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="jkzh" jdbcType="VARCHAR" property="jkzh" />
+    <result column="politicalparty" jdbcType="VARCHAR" property="politicalparty" />
+    <result column="workin" jdbcType="VARCHAR" property="workin" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="addressofregister" jdbcType="VARCHAR" property="addressofregister" />
+    <result column="xzdz" jdbcType="VARCHAR" property="xzdz" />
+    <result column="resume" jdbcType="VARCHAR" property="resume" />
+    <result column="gxlx" jdbcType="VARCHAR" property="gxlx" />
+    <result column="xm2" jdbcType="VARCHAR" property="xm2" />
+    <result column="xb2" jdbcType="VARCHAR" property="xb2" />
+    <result column="age2" jdbcType="VARCHAR" property="age2" />
+    <result column="csrq2" jdbcType="VARCHAR" property="csrq2" />
+    <result column="dw2" jdbcType="VARCHAR" property="dw2" />
+    <result column="zy2" jdbcType="VARCHAR" property="zy2" />
+    <result column="xxzz" jdbcType="VARCHAR" property="xxzz" />
+    <result column="lxfs2" jdbcType="VARCHAR" property="lxfs2" />
+    <result column="csid" jdbcType="VARCHAR" property="csid" />
+    <result column="compellentstemp" jdbcType="VARCHAR" property="compellentstemp" />
+    <result column="termofcompellentstemp" jdbcType="VARCHAR" property="termofcompellentstemp" />
+    <result column="cellofterm" jdbcType="VARCHAR" property="cellofterm" />
+    <result column="beginperformtime" jdbcType="VARCHAR" property="beginperformtime" />
+    <result column="endperformtime" jdbcType="VARCHAR" property="endperformtime" />
+    <result column="cpaturetime" jdbcType="VARCHAR" property="cpaturetime" />
+    <result column="performby" jdbcType="VARCHAR" property="performby" />
+    <result column="delaylengthofterm" jdbcType="VARCHAR" property="delaylengthofterm" />
+    <result column="cellofdelaylength" jdbcType="VARCHAR" property="cellofdelaylength" />
+    <result column="delaytotime" jdbcType="VARCHAR" property="delaytotime" />
+    <result column="sfzc" jdbcType="VARCHAR" property="sfzc" />
+    <result column="bank" jdbcType="VARCHAR" property="bank" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+    <result column="oldmoney" jdbcType="VARCHAR" property="oldmoney" />
+    <result column="qbhslx" jdbcType="VARCHAR" property="qbhslx" />
+    <result column="zxdxjy" jdbcType="VARCHAR" property="zxdxjy" />
+    <result column="zxdxxx" jdbcType="VARCHAR" property="zxdxxx" />
+    <result column="zxddmc" jdbcType="VARCHAR" property="zxddmc" />
+    <result column="zxddxz" jdbcType="VARCHAR" property="zxddxz" />
+    <result column="zddddd" jdbcType="VARCHAR" property="zddddd" />
+    <result column="zdddsj" jdbcType="VARCHAR" property="zdddsj" />
+    <result column="tqjcsj" jdbcType="VARCHAR" property="tqjcsj" />
+    <result column="assistantunit" jdbcType="VARCHAR" property="assistantunit" />
+    <result column="assistantunitinfact" jdbcType="VARCHAR" property="assistantunitinfact" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="departmentcode" jdbcType="VARCHAR" property="departmentcode" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="createdtime" jdbcType="VARCHAR" property="createdtime" />
+    <result column="securitygrade" jdbcType="VARCHAR" property="securitygrade" />
+    <result column="reservation01" jdbcType="VARCHAR" property="reservation01" />
+    <result column="reservation02" jdbcType="VARCHAR" property="reservation02" />
+    <result column="reservation03" jdbcType="VARCHAR" property="reservation03" />
+    <result column="reservation04" jdbcType="VARCHAR" property="reservation04" />
+    <result column="reservation05" jdbcType="VARCHAR" property="reservation05" />
+    <result column="reservation06" jdbcType="VARCHAR" property="reservation06" />
+    <result column="reservation07" jdbcType="VARCHAR" property="reservation07" />
+    <result column="reservation08" jdbcType="VARCHAR" property="reservation08" />
+    <result column="reservation09" jdbcType="VARCHAR" property="reservation09" />
+    <result column="reservation10" jdbcType="VARCHAR" property="reservation10" />
+    <result column="lastupdatedby" jdbcType="VARCHAR" property="lastupdatedby" />
+    <result column="lastupdatedtime" jdbcType="VARCHAR" property="lastupdatedtime" />
+    <result column="refreshtime" jdbcType="VARCHAR" property="refreshtime" />
+    <result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+    <result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+    <result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+    <result column="maxprintnum1" jdbcType="VARCHAR" property="maxprintnum1" />
+    <result column="maxprintnum2" jdbcType="VARCHAR" property="maxprintnum2" />
+    <result column="maxprintnum3" jdbcType="VARCHAR" property="maxprintnum3" />
+    <result column="maxprintnum4" jdbcType="VARCHAR" property="maxprintnum4" />
+    <result column="reservation11" jdbcType="VARCHAR" property="reservation11" />
+    <result column="reservation12" jdbcType="VARCHAR" property="reservation12" />
+    <result column="reservation13" jdbcType="VARCHAR" property="reservation13" />
+    <result column="reservation14" jdbcType="VARCHAR" property="reservation14" />
+    <result column="reservation15" jdbcType="VARCHAR" property="reservation15" />
+    <result column="reservation16" jdbcType="VARCHAR" property="reservation16" />
+    <result column="reservation17" jdbcType="VARCHAR" property="reservation17" />
+    <result column="reservation18" jdbcType="VARCHAR" property="reservation18" />
+    <result column="reservation19" jdbcType="VARCHAR" property="reservation19" />
+    <result column="reservation20" jdbcType="VARCHAR" property="reservation20" />
+    <result column="transactprimarytoutid" jdbcType="VARCHAR" property="transactprimarytoutid" />
+    <result column="confirmbypersonid" jdbcType="VARCHAR" property="confirmbypersonid" />
+    <result column="confirmbyunitid" jdbcType="VARCHAR" property="confirmbyunitid" />
+    <result column="writebyid" jdbcType="VARCHAR" property="writebyid" />
+    <result column="reservation21" jdbcType="VARCHAR" property="reservation21" />
+    <result column="reservation22" jdbcType="VARCHAR" property="reservation22" />
+    <result column="reservation23" jdbcType="VARCHAR" property="reservation23" />
+    <result column="reservation24" jdbcType="VARCHAR" property="reservation24" />
+    <result column="reservation25" jdbcType="VARCHAR" property="reservation25" />
+    <result column="reservation26" jdbcType="VARCHAR" property="reservation26" />
+    <result column="reservation27" jdbcType="VARCHAR" property="reservation27" />
+    <result column="reservation28" jdbcType="VARCHAR" property="reservation28" />
+    <result column="reservation29" jdbcType="VARCHAR" property="reservation29" />
+    <result column="reservation30" jdbcType="VARCHAR" property="reservation30" />
+    <result column="reservation31" jdbcType="VARCHAR" property="reservation31" />
+    <result column="reservation32" jdbcType="VARCHAR" property="reservation32" />
+    <result column="ssws1_printdate" jdbcType="VARCHAR" property="ssws1Printdate" />
+    <result column="ssws2_printdate" jdbcType="VARCHAR" property="ssws2Printdate" />
+    <result column="ssws3_printdate" jdbcType="VARCHAR" property="ssws3Printdate" />
+    <result column="ssws4_printdate" jdbcType="VARCHAR" property="ssws4Printdate" />
+    <result column="wscqjb" jdbcType="VARCHAR" property="wscqjb" />
+    <result column="rkdjsj" jdbcType="VARCHAR" property="rkdjsj" />
+    <result column="rkgxsj" jdbcType="VARCHAR" property="rkgxsj" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hyzs.cidyth.module.base.entity.CasesLawBook">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="analysiscase" jdbcType="LONGVARCHAR" property="analysiscase" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, writid, ajbh, ajmc, ajwh, ajlx, writefor, dxbh, wscode, wsmc, wordofwrit, yearofwrit,
+    markofwrit, wordofwrit2, yearofwrit2, markofwrit2, state, superwritid, beginhappentime, 
+    endhappentime, transact, submitnote, lawname, itemoflaw, analysisinlaw, returnwritdate, 
+    bookoffile, pageoffile, pageofreinforce, epilog, transactprimarytout, transactunit, 
+    badwlxdh, submittime, confirmnote, wsdqhj, wsdqzt, confirmbyperson, confirmbyunit, 
+    confirmtime, writetime, writeby, receiveunit, tosomebody, receiveby, receivetime, 
+    oldbriefreason, briefreason, detailreason, dwmc, xxdzms, frdb, zwxm, cym, byname, 
+    sex, ywx, ywm, nation, nationlity, nativeplace, age, birthdayinbegin, birthdayinend, 
+    cardtype, zjhm, hyzk, culture, sf, specialdegree, profession, jkzh, politicalparty, 
+    workin, lxdh, addressofregister, xzdz, resume, gxlx, xm2, xb2, age2, csrq2, dw2, 
+    zy2, xxzz, lxfs2, csid, compellentstemp, termofcompellentstemp, cellofterm, beginperformtime, 
+    endperformtime, cpaturetime, performby, delaylengthofterm, cellofdelaylength, delaytotime, 
+    sfzc, bank, account, money, oldmoney, qbhslx, zxdxjy, zxdxxx, zxddmc, zxddxz, zddddd, 
+    zdddsj, tqjcsj, assistantunit, assistantunitinfact, note, departmentcode, creator, 
+    createdtime, securitygrade, reservation01, reservation02, reservation03, reservation04, 
+    reservation05, reservation06, reservation07, reservation08, reservation09, reservation10, 
+    lastupdatedby, lastupdatedtime, refreshtime, uploadflag, downloadflag, deleteflag, 
+    maxprintnum1, maxprintnum2, maxprintnum3, maxprintnum4, reservation11, reservation12, 
+    reservation13, reservation14, reservation15, reservation16, reservation17, reservation18, 
+    reservation19, reservation20, transactprimarytoutid, confirmbypersonid, confirmbyunitid, 
+    writebyid, reservation21, reservation22, reservation23, reservation24, reservation25, 
+    reservation26, reservation27, reservation28, reservation29, reservation30, reservation31, 
+    reservation32, ssws1_printdate, ssws2_printdate, ssws3_printdate, ssws4_printdate, 
+    wscqjb, rkdjsj, rkgxsj
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    analysiscase
+  </sql>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.integral.dao.IntegralRuleMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.integral.entity.IntegralRule">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="rule_name" jdbcType="VARCHAR" property="ruleName" />
+    <result column="rule_type" jdbcType="VARCHAR" property="ruleType" />
+    <result column="smbz" jdbcType="VARCHAR" property="smbz" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgry" jdbcType="VARCHAR" property="xgry" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="xgrymc" jdbcType="VARCHAR" property="xgrymc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, pid, rule_name, rule_type, smbz, lrry, lrsj, xgry, xgsj, lrrymc, xgrymc
+  </sql>
+
+  <select id="list" resultMap="list">
+    select
+      master_rule.id,
+      master_rule.rule_name,
+      master_rule.rule_type,
+      master_rule.lrrymc,
+      master_rule.lrsj,
+      slave_rule.rule_name as parent_name
+    from t_integral_rule master_rule
+    left join t_integral_rule slave_rule on slave_rule.id = master_rule.pid
+  </select>
+  <resultMap id="list" type="com.hyzs.cidyth.module.integral.vo.IntegralRuleVO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rule_name" jdbcType="VARCHAR" property="ruleName" />
+    <result column="rule_type" jdbcType="VARCHAR" property="ruleType" />
+    <result column="parent_name" jdbcType="VARCHAR" property="parentName" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+  </resultMap>
+
+  <select id="listIntegralRuleOptionByRuleType" resultType="com.hyzs.cidyth.module.integral.vo.IntegralRuleOption">
+    select
+        master_rule.rule_name as ruleName,
+        master_rule.rule_type as ruleType,
+        slave_config.integral_type as integralType,
+        slave_config.upper_limit as upperLimit,
+        slave_config.lower_limit as lowerLimit
+    from t_integral_rule master_rule
+    inner join t_integral_config slave_config on slave_config.rule_type = master_rule.rule_type
+    where master_rule.pid in (
+        select id from t_integral_rule where rule_type = #{ruleType}
+    )
+  </select>
+</mapper>

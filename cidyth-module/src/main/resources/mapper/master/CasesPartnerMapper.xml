@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesPartnerMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.base.entity.CasesPartner">
+		<!-- WARNING - @mbg.generated -->
+		<id column="zyId" jdbcType="BIGINT" property="zyId" />
+		<result column="sfyx" jdbcType="VARCHAR" property="sfyx" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="jgdm" jdbcType="VARCHAR" property="jgdm" />
+		<result column="jgmc" jdbcType="VARCHAR" property="jgmc" />
+		<result column="jybh" jdbcType="VARCHAR" property="jybh" />
+		<result column="jyxm" jdbcType="VARCHAR" property="jyxm" />
+		<result column="sjhm" jdbcType="VARCHAR" property="sjhm" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<result column="lrryjgdm" jdbcType="VARCHAR" property="lrryjgdm" />
+		<result column="lrryjgmc" jdbcType="VARCHAR" property="lrryjgmc" />
+		<result column="lrrybh" jdbcType="VARCHAR" property="lrrybh" />
+		<result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		zyId,sfyx,ajbh,jgdm,jgmc,jybh,jyxm,sjhm,smbz,lrsj,lrryjgdm,lrryjgmc,lrrybh,lrrymc
+	</sql>
+	<select id="selectCasePartnersByAjbh" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_case_partner where ajbh = #{ajbh} and sfyx='1'
+	</select>
+	<select id="isExist" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(zyId) from t_case_partner where ajbh = #{ajbh} and jybh =
+		#{jybh} and sfyx='1'
+	</select>
+	<delete id="deleteCasePartner" parameterType="java.util.Map">
+		delete from
+		t_case_partner where ajbh = #{ajbh}
+		and jybh in
+		<foreach collection="jybhList" item="jybh" open="(" separator=","
+			close=")">
+			#{jybh}
+		</foreach>
+	</delete>
+
+	<insert id="batchInsertCasePartners" parameterType="java.util.Map">
+		<if test="casePartnerList != null and casePartnerList.size()>0">
+			INSERT INTO t_case_partner(ajbh,jgdm,jgmc,jybh,jyxm,sjhm,smbz,lrryjgdm,lrryjgmc,lrrybh,lrrymc)
+			VALUES
+			<foreach collection="casePartnerList" item="casePartner"
+				separator=",">
+				(#{casePartner.ajbh},#{casePartner.jgdm},#{casePartner.jgmc},#{casePartner.jybh},#{casePartner.jyxm},#{casePartner.sjhm},#{casePartner.smbz},#{casePartner.lrryjgdm},#{casePartner.lrryjgmc},#{casePartner.lrrybh},#{casePartner.lrrymc})
+			</foreach>
+		</if>
+	</insert>
+</mapper>

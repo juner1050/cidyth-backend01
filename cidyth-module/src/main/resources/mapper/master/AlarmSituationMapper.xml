@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.AlarmSituationMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.AlarmSituation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="systemid" jdbcType="VARCHAR" property="systemid" />
+    <result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+    <result column="ajmc" jdbcType="VARCHAR" property="ajmc" />
+    <result column="sljjdw" jdbcType="VARCHAR" property="sljjdw" />
+    <result column="sljjry" jdbcType="VARCHAR" property="sljjry" />
+    <result column="sl_bjslh" jdbcType="VARCHAR" property="slBjslh" />
+    <result column="jqlb" jdbcType="VARCHAR" property="jqlb" />
+    <result column="ab" jdbcType="VARCHAR" property="ab" />
+    <result column="sljjsj" jdbcType="TIMESTAMP" property="sljjsj" />
+    <result column="slfxrq" jdbcType="TIMESTAMP" property="slfxrq" />
+    <result column="fasjcz" jdbcType="TIMESTAMP" property="fasjcz" />
+    <result column="fasjzz" jdbcType="TIMESTAMP" property="fasjzz" />
+    <result column="sl_jjfs" jdbcType="VARCHAR" property="slJjfs" />
+    <result column="yssj" jdbcType="TIMESTAMP" property="yssj" />
+    <result column="ysyy" jdbcType="VARCHAR" property="ysyy" />
+    <result column="ysdw" jdbcType="VARCHAR" property="ysdw" />
+    <result column="ysdwcbr" jdbcType="VARCHAR" property="ysdwcbr" />
+    <result column="yscbrdh" jdbcType="VARCHAR" property="yscbrdh" />
+    <result column="fadd_qx" jdbcType="VARCHAR" property="faddQx" />
+    <result column="fadd_jd" jdbcType="VARCHAR" property="faddJd" />
+    <result column="ajssjq" jdbcType="VARCHAR" property="ajssjq" />
+    <result column="fadd" jdbcType="VARCHAR" property="fadd" />
+    <result column="sssq" jdbcType="VARCHAR" property="sssq" />
+    <result column="swrs" jdbcType="INTEGER" property="swrs" />
+    <result column="ssrs" jdbcType="INTEGER" property="ssrs" />
+    <result column="ssjz" jdbcType="INTEGER" property="ssjz" />
+    <result column="sazz" jdbcType="INTEGER" property="sazz" />
+    <result column="sl_zhrs" jdbcType="INTEGER" property="slZhrs" />
+    <result column="sl_jzrs" jdbcType="INTEGER" property="slJzrs" />
+    <result column="sl_jjfnrs" jdbcType="INTEGER" property="slJjfnrs" />
+    <result column="sl_jjetrs" jdbcType="INTEGER" property="slJjetrs" />
+    <result column="sl_cjrc" jdbcType="INTEGER" property="slCjrc" />
+    <result column="sl_cjcl" jdbcType="INTEGER" property="slCjcl" />
+    <result column="sl_cjcz" jdbcType="INTEGER" property="slCjcz" />
+    <result column="sl_cjhk" jdbcType="INTEGER" property="slCjhk" />
+    <result column="sl_ldqz" jdbcType="VARCHAR" property="slLdqz" />
+    <result column="sl_cljg" jdbcType="VARCHAR" property="slCljg" />
+    <result column="sl_slsj" jdbcType="TIMESTAMP" property="slSlsj" />
+    <result column="sl_slrxm" jdbcType="VARCHAR" property="slSlrxm" />
+    <result column="sljsdw" jdbcType="VARCHAR" property="sljsdw" />
+    <result column="sl_lrr" jdbcType="VARCHAR" property="slLrr" />
+    <result column="sl_lrsj" jdbcType="TIMESTAMP" property="slLrsj" />
+    <result column="fxxs" jdbcType="VARCHAR" property="fxxs" />
+    <result column="departmentcode" jdbcType="VARCHAR" property="departmentcode" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="createdtime" jdbcType="TIMESTAMP" property="createdtime" />
+    <result column="securitygrade" jdbcType="VARCHAR" property="securitygrade" />
+    <result column="reservation01" jdbcType="VARCHAR" property="reservation01" />
+    <result column="reservation02" jdbcType="VARCHAR" property="reservation02" />
+    <result column="reservation03" jdbcType="VARCHAR" property="reservation03" />
+    <result column="reservation04" jdbcType="VARCHAR" property="reservation04" />
+    <result column="reservation05" jdbcType="VARCHAR" property="reservation05" />
+    <result column="reservation06" jdbcType="VARCHAR" property="reservation06" />
+    <result column="reservation08" jdbcType="VARCHAR" property="reservation08" />
+    <result column="reservation09" jdbcType="VARCHAR" property="reservation09" />
+    <result column="reservation10" jdbcType="VARCHAR" property="reservation10" />
+    <result column="lastupdatedby" jdbcType="VARCHAR" property="lastupdatedby" />
+    <result column="lastupdatedtime" jdbcType="TIMESTAMP" property="lastupdatedtime" />
+    <result column="refreshtime" jdbcType="TIMESTAMP" property="refreshtime" />
+    <result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+    <result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+    <result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+    <result column="reserver1" jdbcType="VARCHAR" property="reserver1" />
+    <result column="reserver2" jdbcType="VARCHAR" property="reserver2" />
+    <result column="reserver3" jdbcType="VARCHAR" property="reserver3" />
+    <result column="reserver4" jdbcType="VARCHAR" property="reserver4" />
+    <result column="reserver5" jdbcType="VARCHAR" property="reserver5" />
+    <result column="reserver6" jdbcType="VARCHAR" property="reserver6" />
+    <result column="reserver7" jdbcType="VARCHAR" property="reserver7" />
+    <result column="reserver8" jdbcType="VARCHAR" property="reserver8" />
+    <result column="reserver9" jdbcType="VARCHAR" property="reserver9" />
+    <result column="reserver10" jdbcType="VARCHAR" property="reserver10" />
+    <result column="reserver11" jdbcType="VARCHAR" property="reserver11" />
+    <result column="reserver12" jdbcType="VARCHAR" property="reserver12" />
+    <result column="reserver13" jdbcType="VARCHAR" property="reserver13" />
+    <result column="reserver14" jdbcType="TIMESTAMP" property="reserver14" />
+    <result column="reserver15" jdbcType="VARCHAR" property="reserver15" />
+    <result column="reserver16" jdbcType="VARCHAR" property="reserver16" />
+    <result column="reserver17" jdbcType="VARCHAR" property="reserver17" />
+    <result column="reserver20" jdbcType="TIMESTAMP" property="reserver20" />
+    <result column="reserver21" jdbcType="TIMESTAMP" property="reserver21" />
+    <result column="reserver51" jdbcType="INTEGER" property="reserver51" />
+    <result column="reserver52" jdbcType="INTEGER" property="reserver52" />
+    <result column="reserver53" jdbcType="INTEGER" property="reserver53" />
+    <result column="reserver54" jdbcType="INTEGER" property="reserver54" />
+    <result column="reserver55" jdbcType="INTEGER" property="reserver55" />
+    <result column="reserver56" jdbcType="INTEGER" property="reserver56" />
+    <result column="reserver57" jdbcType="INTEGER" property="reserver57" />
+    <result column="reserver58" jdbcType="INTEGER" property="reserver58" />
+    <result column="reserver59" jdbcType="INTEGER" property="reserver59" />
+    <result column="reserver60" jdbcType="INTEGER" property="reserver60" />
+    <result column="reserver61" jdbcType="TIMESTAMP" property="reserver61" />
+    <result column="reserver62" jdbcType="TIMESTAMP" property="reserver62" />
+    <result column="reserver63" jdbcType="TIMESTAMP" property="reserver63" />
+    <result column="reserver64" jdbcType="TIMESTAMP" property="reserver64" />
+    <result column="reserver65" jdbcType="TIMESTAMP" property="reserver65" />
+    <result column="reserver66" jdbcType="TIMESTAMP" property="reserver66" />
+    <result column="reserver67" jdbcType="TIMESTAMP" property="reserver67" />
+    <result column="reserver68" jdbcType="TIMESTAMP" property="reserver68" />
+    <result column="reserver69" jdbcType="TIMESTAMP" property="reserver69" />
+    <result column="reserver70" jdbcType="TIMESTAMP" property="reserver70" />
+    <result column="datastate" jdbcType="VARCHAR" property="datastate" />
+    <result column="datacheck" jdbcType="VARCHAR" property="datacheck" />
+    <result column="queryid" jdbcType="VARCHAR" property="queryid" />
+    <result column="reservation40" jdbcType="TIMESTAMP" property="reservation40" />
+    <result column="reservation39" jdbcType="TIMESTAMP" property="reservation39" />
+    <result column="pjsj" jdbcType="TIMESTAMP" property="pjsj" />
+    <result column="ddxcsj" jdbcType="TIMESTAMP" property="ddxcsj" />
+    <result column="jqzbxx" jdbcType="VARCHAR" property="jqzbxx" />
+    <result column="reservation37" jdbcType="TIMESTAMP" property="reservation37" />
+    <result column="reservation38" jdbcType="TIMESTAMP" property="reservation38" />
+    <result column="flmjid" jdbcType="VARCHAR" property="flmjid" />
+    <result column="flmjdw" jdbcType="VARCHAR" property="flmjdw" />
+    <result column="section" jdbcType="VARCHAR" property="section" />
+    <result column="bjly" jdbcType="VARCHAR" property="bjly" />
+    <result column="bjdd" jdbcType="VARCHAR" property="bjdd" />
+    <result column="bjdh" jdbcType="VARCHAR" property="bjdh" />
+    <result column="sars" jdbcType="INTEGER" property="sars" />
+    <result column="cjdw" jdbcType="VARCHAR" property="cjdw" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="ddsj" jdbcType="TIMESTAMP" property="ddsj" />
+    <result column="tjjf" jdbcType="VARCHAR" property="tjjf" />
+    <result column="xckz" jdbcType="VARCHAR" property="xckz" />
+    <result column="cljy" jdbcType="VARCHAR" property="cljy" />
+    <result column="wdw_bary" jdbcType="VARCHAR" property="wdwBary" />
+    <result column="hbjqh" jdbcType="VARCHAR" property="hbjqh" />
+    <result column="reservation21" jdbcType="VARCHAR" property="reservation21" />
+    <result column="reservation22" jdbcType="VARCHAR" property="reservation22" />
+    <result column="reservation23" jdbcType="TIMESTAMP" property="reservation23" />
+    <result column="reservation24" jdbcType="TIMESTAMP" property="reservation24" />
+    <result column="reservation25" jdbcType="TIMESTAMP" property="reservation25" />
+    <result column="reservation56" jdbcType="TIMESTAMP" property="reservation56" />
+    <result column="reservation57" jdbcType="TIMESTAMP" property="reservation57" />
+    <result column="reservation58" jdbcType="TIMESTAMP" property="reservation58" />
+    <result column="reservation59" jdbcType="TIMESTAMP" property="reservation59" />
+    <result column="reservation60" jdbcType="TIMESTAMP" property="reservation60" />
+    <result column="rkdjsj" jdbcType="TIMESTAMP" property="rkdjsj" />
+    <result column="rkgxsj" jdbcType="TIMESTAMP" property="rkgxsj" />
+    <result column="aj_from" jdbcType="TINYINT" property="ajFrom" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hyzs.cidyth.module.base.entity.AlarmSituation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="zyaq" jdbcType="LONGVARCHAR" property="zyaq" />
+    <result column="sl_ajclqk" jdbcType="LONGVARCHAR" property="slAjclqk" />
+    <result column="sl_cjry" jdbcType="LONGVARCHAR" property="slCjry" />
+    <result column="reservation07" jdbcType="LONGVARCHAR" property="reservation07" />
+    <result column="bz" jdbcType="LONGVARCHAR" property="bz" />
+    <result column="reserver18" jdbcType="LONGVARCHAR" property="reserver18" />
+    <result column="reserver19" jdbcType="LONGVARCHAR" property="reserver19" />
+    <result column="reserver22" jdbcType="LONGVARCHAR" property="reserver22" />
+    <result column="reserver23" jdbcType="LONGVARCHAR" property="reserver23" />
+    <result column="reserver24" jdbcType="LONGVARCHAR" property="reserver24" />
+    <result column="reserver25" jdbcType="LONGVARCHAR" property="reserver25" />
+    <result column="reserver26" jdbcType="LONGVARCHAR" property="reserver26" />
+    <result column="reserver27" jdbcType="LONGVARCHAR" property="reserver27" />
+    <result column="reserver28" jdbcType="LONGVARCHAR" property="reserver28" />
+    <result column="reserver29" jdbcType="LONGVARCHAR" property="reserver29" />
+    <result column="reserver30" jdbcType="LONGVARCHAR" property="reserver30" />
+    <result column="reserver31" jdbcType="LONGVARCHAR" property="reserver31" />
+    <result column="reserver32" jdbcType="LONGVARCHAR" property="reserver32" />
+    <result column="reserver33" jdbcType="LONGVARCHAR" property="reserver33" />
+    <result column="reserver34" jdbcType="LONGVARCHAR" property="reserver34" />
+    <result column="reserver35" jdbcType="LONGVARCHAR" property="reserver35" />
+    <result column="reserver36" jdbcType="LONGVARCHAR" property="reserver36" />
+    <result column="reserver37" jdbcType="LONGVARCHAR" property="reserver37" />
+    <result column="reserver38" jdbcType="LONGVARCHAR" property="reserver38" />
+    <result column="reserver39" jdbcType="LONGVARCHAR" property="reserver39" />
+    <result column="reserver40" jdbcType="LONGVARCHAR" property="reserver40" />
+    <result column="reserver41" jdbcType="LONGVARCHAR" property="reserver41" />
+    <result column="reserver42" jdbcType="LONGVARCHAR" property="reserver42" />
+    <result column="reserver43" jdbcType="LONGVARCHAR" property="reserver43" />
+    <result column="reserver44" jdbcType="LONGVARCHAR" property="reserver44" />
+    <result column="reserver45" jdbcType="LONGVARCHAR" property="reserver45" />
+    <result column="reserver46" jdbcType="LONGVARCHAR" property="reserver46" />
+    <result column="reserver47" jdbcType="LONGVARCHAR" property="reserver47" />
+    <result column="reserver48" jdbcType="LONGVARCHAR" property="reserver48" />
+    <result column="reserver49" jdbcType="LONGVARCHAR" property="reserver49" />
+    <result column="reserver50" jdbcType="LONGVARCHAR" property="reserver50" />
+    <result column="reserver71" jdbcType="LONGVARCHAR" property="reserver71" />
+    <result column="reserver72" jdbcType="LONGVARCHAR" property="reserver72" />
+    <result column="reserver73" jdbcType="LONGVARCHAR" property="reserver73" />
+    <result column="reserver74" jdbcType="LONGVARCHAR" property="reserver74" />
+    <result column="reserver75" jdbcType="LONGVARCHAR" property="reserver75" />
+    <result column="reserver76" jdbcType="LONGVARCHAR" property="reserver76" />
+    <result column="reserver77" jdbcType="LONGVARCHAR" property="reserver77" />
+    <result column="reserver78" jdbcType="LONGVARCHAR" property="reserver78" />
+    <result column="reserver79" jdbcType="LONGVARCHAR" property="reserver79" />
+    <result column="reserver80" jdbcType="LONGVARCHAR" property="reserver80" />
+    <result column="reservation32" jdbcType="LONGVARCHAR" property="reservation32" />
+    <result column="reservation31" jdbcType="LONGVARCHAR" property="reservation31" />
+    <result column="reservation18" jdbcType="LONGVARCHAR" property="reservation18" />
+    <result column="reservation17" jdbcType="LONGVARCHAR" property="reservation17" />
+    <result column="reservation16" jdbcType="LONGVARCHAR" property="reservation16" />
+    <result column="reservation15" jdbcType="LONGVARCHAR" property="reservation15" />
+    <result column="reservation14" jdbcType="LONGVARCHAR" property="reservation14" />
+    <result column="reservation13" jdbcType="LONGVARCHAR" property="reservation13" />
+    <result column="reservation12" jdbcType="LONGVARCHAR" property="reservation12" />
+    <result column="reservation11" jdbcType="LONGVARCHAR" property="reservation11" />
+    <result column="reservation19" jdbcType="LONGVARCHAR" property="reservation19" />
+    <result column="reservation20" jdbcType="LONGVARCHAR" property="reservation20" />
+    <result column="reservation33" jdbcType="LONGVARCHAR" property="reservation33" />
+    <result column="reservation34" jdbcType="LONGVARCHAR" property="reservation34" />
+    <result column="reservation35" jdbcType="LONGVARCHAR" property="reservation35" />
+    <result column="reservation36" jdbcType="LONGVARCHAR" property="reservation36" />
+    <result column="cjjl" jdbcType="LONGVARCHAR" property="cjjl" />
+    <result column="bdw_bary" jdbcType="LONGVARCHAR" property="bdwBary" />
+    <result column="reservation41" jdbcType="LONGVARCHAR" property="reservation41" />
+    <result column="reservation42" jdbcType="LONGVARCHAR" property="reservation42" />
+    <result column="reservation43" jdbcType="LONGVARCHAR" property="reservation43" />
+    <result column="reservation44" jdbcType="LONGVARCHAR" property="reservation44" />
+    <result column="reservation45" jdbcType="LONGVARCHAR" property="reservation45" />
+    <result column="reservation46" jdbcType="LONGVARCHAR" property="reservation46" />
+    <result column="reservation47" jdbcType="LONGVARCHAR" property="reservation47" />
+    <result column="reservation48" jdbcType="LONGVARCHAR" property="reservation48" />
+    <result column="reservation49" jdbcType="LONGVARCHAR" property="reservation49" />
+    <result column="reservation50" jdbcType="LONGVARCHAR" property="reservation50" />
+    <result column="reservation51" jdbcType="LONGVARCHAR" property="reservation51" />
+    <result column="reservation52" jdbcType="LONGVARCHAR" property="reservation52" />
+    <result column="reservation53" jdbcType="LONGVARCHAR" property="reservation53" />
+    <result column="reservation54" jdbcType="LONGVARCHAR" property="reservation54" />
+    <result column="reservation55" jdbcType="LONGVARCHAR" property="reservation55" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, systemid, ajbh, ajmc, sljjdw, sljjry, sl_bjslh, jqlb, ab, sljjsj, slfxrq, fasjcz,
+    fasjzz, sl_jjfs, yssj, ysyy, ysdw, ysdwcbr, yscbrdh, fadd_qx, fadd_jd, ajssjq, fadd,
+    sssq, swrs, ssrs, ssjz, sazz, sl_zhrs, sl_jzrs, sl_jjfnrs, sl_jjetrs, sl_cjrc, sl_cjcl,
+    sl_cjcz, sl_cjhk, sl_ldqz, sl_cljg, sl_slsj, sl_slrxm, sljsdw, sl_lrr, sl_lrsj, fxxs,
+    departmentcode, creator, createdtime, securitygrade, reservation01, reservation02,
+    reservation03, reservation04, reservation05, reservation06, reservation08, reservation09,
+    reservation10, lastupdatedby, lastupdatedtime, refreshtime, uploadflag, downloadflag,
+    deleteflag, reserver1, reserver2, reserver3, reserver4, reserver5, reserver6, reserver7,
+    reserver8, reserver9, reserver10, reserver11, reserver12, reserver13, reserver14,
+    reserver15, reserver16, reserver17, reserver20, reserver21, reserver51, reserver52,
+    reserver53, reserver54, reserver55, reserver56, reserver57, reserver58, reserver59,
+    reserver60, reserver61, reserver62, reserver63, reserver64, reserver65, reserver66,
+    reserver67, reserver68, reserver69, reserver70, datastate, datacheck, queryid, reservation40,
+    reservation39, pjsj, ddxcsj, jqzbxx, reservation37, reservation38, flmjid, flmjdw,
+    section, bjly, bjdd, bjdh, sars, cjdw, cjsj, ddsj, tjjf, xckz, cljy, wdw_bary, hbjqh,
+    reservation21, reservation22, reservation23, reservation24, reservation25, reservation56,
+    reservation57, reservation58, reservation59, reservation60, rkdjsj, rkgxsj, aj_from,
+    lrry, lrrymc, lrsj
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    zyaq, sl_ajclqk, sl_cjry, reservation07, bz, reserver18, reserver19, reserver22,
+    reserver23, reserver24, reserver25, reserver26, reserver27, reserver28, reserver29,
+    reserver30, reserver31, reserver32, reserver33, reserver34, reserver35, reserver36,
+    reserver37, reserver38, reserver39, reserver40, reserver41, reserver42, reserver43,
+    reserver44, reserver45, reserver46, reserver47, reserver48, reserver49, reserver50,
+    reserver71, reserver72, reserver73, reserver74, reserver75, reserver76, reserver77,
+    reserver78, reserver79, reserver80, reservation32, reservation31, reservation18,
+    reservation17, reservation16, reservation15, reservation14, reservation13, reservation12,
+    reservation11, reservation19, reservation20, reservation33, reservation34, reservation35,
+    reservation36, cjjl, bdw_bary, reservation41, reservation42, reservation43, reservation44,
+    reservation45, reservation46, reservation47, reservation48, reservation49, reservation50,
+    reservation51, reservation52, reservation53, reservation54, reservation55
+  </sql>
+</mapper>

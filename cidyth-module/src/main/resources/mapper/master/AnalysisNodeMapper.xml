@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.analysis.dao.AnalysisNodeMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.analysis.entity.AnalysisNode">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="xsbh" jdbcType="VARCHAR" property="xsbh" />
+    <result column="fsrybh" jdbcType="VARCHAR" property="fsrybh" />
+    <result column="fsrymc" jdbcType="VARCHAR" property="fsrymc" />
+    <result column="fsryjgbh" jdbcType="VARCHAR" property="fsryjgbh" />
+    <result column="fsryjgmc" jdbcType="VARCHAR" property="fsryjgmc" />
+    <result column="jsrybh" jdbcType="VARCHAR" property="jsrybh" />
+    <result column="jsrymc" jdbcType="VARCHAR" property="jsrymc" />
+    <result column="jsryjgbh" jdbcType="VARCHAR" property="jsryjgbh" />
+    <result column="jsryjgmc" jdbcType="VARCHAR" property="jsryjgmc" />
+    <result column="jdxh" jdbcType="INTEGER" property="jdxh" />
+    <result column="jdzt" jdbcType="VARCHAR" property="jdzt" />
+    <result column="sfjs" jdbcType="VARCHAR" property="sfjs" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, xsbh, fsrybh, fsrymc, fsryjgbh, fsryjgmc, jsrybh, jsrymc, jsryjgbh, jsryjgmc, jdxh, jdzt, sfjs, lrry, lrrymc, lrsj, xgsj
+  </sql>
+</mapper>

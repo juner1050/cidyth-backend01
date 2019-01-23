@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.demand.dao.DemandFlowRoleMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.demand.entity.DemandFlowRole">
+		<!-- WARNING - @mbg.generated -->
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="lzjdbh" jdbcType="VARCHAR" property="lzjdbh" />
+		<result column="jsbh" jdbcType="VARCHAR" property="jsbh" />
+		<result column="jsmc" jdbcType="VARCHAR" property="jsmc" />
+	</resultMap>
+
+	<select id="selectBySelective" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select id,lzjdbh,jsbh,jsmc
+		from t_demand_flow_role
+		where 1=1
+		<if test="flowNodeNameList != null and flowNodeNameList.size()>0">
+			and lzjdbh in 
+			<foreach collection="flowNodeNameList" item="flowNode" open="(" separator="," close=")">
+				#{flowNode}
+			</foreach>
+		</if>
+		<if test="roleIdList != null and roleIdList.size()>0">
+			and jsbh in 
+			<foreach collection="roleIdList" item="roleId" open="(" separator="," close=")">
+				#{roleId}
+			</foreach>			
+		</if>
+	</select>
+</mapper>

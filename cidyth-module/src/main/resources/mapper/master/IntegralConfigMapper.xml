@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.integral.dao.IntegralConfigMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.integral.entity.IntegralConfig">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rule_type" jdbcType="VARCHAR" property="ruleType" />
+    <result column="integral_type" jdbcType="INTEGER" property="integralType" />
+    <result column="award_limit" jdbcType="INTEGER" property="awardLimit" />
+    <result column="upper_limit" jdbcType="REAL" property="upperLimit" />
+    <result column="lower_limit" jdbcType="REAL" property="lowerLimit" />
+    <result column="smbz" jdbcType="VARCHAR" property="smbz" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgry" jdbcType="VARCHAR" property="xgry" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="xgrymc" jdbcType="VARCHAR" property="xgrymc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, rule_type, integral_type, award_limit, upper_limit, lower_limit, smbz, lrry, 
+    lrsj, xgry, xgsj, lrrymc, xgrymc
+  </sql>
+
+  <select id="initData" resultType="com.hyzs.cidyth.module.integral.vo.IntegralConfigVO">
+    SELECT
+        master_rule.rule_name as ruleName,
+        master_rule.rule_type as ruleType,
+        slave_config.id,
+        slave_config.upper_limit as upperLimit,
+        slave_config.lower_limit as lowerLimit,
+        slave_config.award_limit as awardLimit,
+        slave_config.integral_type as integralType
+    FROM t_integral_rule master_rule
+    LEFT JOIN t_integral_config slave_config on slave_config.rule_type = master_rule.rule_type
+  </select>
+
+</mapper>

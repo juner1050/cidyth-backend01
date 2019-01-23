@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cidyth-websocket:war">
+    <output-path>$PROJECT_DIR$/cidyth-websocket/target</output-path>
+    <root id="archive" name="cid-websocket.war">
+      <element id="artifact" artifact-name="cidyth-websocket:war exploded" />
+    </root>
+  </artifact>
+</component>

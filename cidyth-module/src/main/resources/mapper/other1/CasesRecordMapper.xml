@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesRecordCidMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.CasesRecordCid">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="systemid" jdbcType="VARCHAR" property="systemid" />
+    <result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+    <result column="ser_no" jdbcType="VARCHAR" property="serNo" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="scen_systemid" jdbcType="VARCHAR" property="scenSystemid" />
+    <result column="target" jdbcType="VARCHAR" property="target" />
+    <result column="fj" jdbcType="VARCHAR" property="fj" />
+    <result column="body" jdbcType="VARCHAR" property="body" />
+    <result column="starttime" jdbcType="VARCHAR" property="starttime" />
+    <result column="endtime" jdbcType="VARCHAR" property="endtime" />
+    <result column="jldd" jdbcType="VARCHAR" property="jldd" />
+    <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
+    <result column="creator_dept" jdbcType="VARCHAR" property="creatorDept" />
+    <result column="recorder" jdbcType="VARCHAR" property="recorder" />
+    <result column="recorder_dept" jdbcType="VARCHAR" property="recorderDept" />
+    <result column="target_xm" jdbcType="VARCHAR" property="targetXm" />
+    <result column="target_cym" jdbcType="VARCHAR" property="targetCym" />
+    <result column="target_xb" jdbcType="VARCHAR" property="targetXb" />
+    <result column="target_csrq" jdbcType="VARCHAR" property="targetCsrq" />
+    <result column="target_whcd" jdbcType="VARCHAR" property="targetWhcd" />
+    <result column="target_mz" jdbcType="VARCHAR" property="targetMz" />
+    <result column="target_hjszd" jdbcType="VARCHAR" property="targetHjszd" />
+    <result column="target_xzz" jdbcType="VARCHAR" property="targetXzz" />
+    <result column="target_zjzl" jdbcType="VARCHAR" property="targetZjzl" />
+    <result column="target_zjhm" jdbcType="VARCHAR" property="targetZjhm" />
+    <result column="target_gzdw" jdbcType="VARCHAR" property="targetGzdw" />
+    <result column="target_lxdh" jdbcType="VARCHAR" property="targetLxdh" />
+    <result column="target_arrivaltime" jdbcType="VARCHAR" property="targetArrivaltime" />
+    <result column="target_lefttime" jdbcType="VARCHAR" property="targetLefttime" />
+    <result column="target_bm" jdbcType="VARCHAR" property="targetBm" />
+    <result column="target_ywm" jdbcType="VARCHAR" property="targetYwm" />
+    <result column="target_gj" jdbcType="VARCHAR" property="targetGj" />
+    <result column="target_ch" jdbcType="VARCHAR" property="targetCh" />
+    <result column="target_jg" jdbcType="VARCHAR" property="targetJg" />
+    <result column="target_zzmm" jdbcType="VARCHAR" property="targetZzmm" />
+    <result column="target_jtqk" jdbcType="VARCHAR" property="targetJtqk" />
+    <result column="target_shjl" jdbcType="VARCHAR" property="targetShjl" />
+    <result column="target_sfsgcf" jdbcType="VARCHAR" property="targetSfsgcf" />
+    <result column="target_sflyrs" jdbcType="VARCHAR" property="targetSflyrs" />
+    <result column="target_sfpbfyry" jdbcType="VARCHAR" property="targetSfpbfyry" />
+    <result column="trans_xm" jdbcType="VARCHAR" property="transXm" />
+    <result column="trans_zy" jdbcType="VARCHAR" property="transZy" />
+    <result column="trans_gzdw" jdbcType="VARCHAR" property="transGzdw" />
+    <result column="trans_xzz" jdbcType="VARCHAR" property="transXzz" />
+    <result column="kcdd" jdbcType="VARCHAR" property="kcdd" />
+    <result column="jcz" jdbcType="VARCHAR" property="jcz" />
+    <result column="kcryms" jdbcType="VARCHAR" property="kcryms" />
+    <result column="reservation01" jdbcType="VARCHAR" property="reservation01" />
+    <result column="reservation02" jdbcType="VARCHAR" property="reservation02" />
+    <result column="reservation03" jdbcType="VARCHAR" property="reservation03" />
+    <result column="reservation04" jdbcType="VARCHAR" property="reservation04" />
+    <result column="reservation05" jdbcType="VARCHAR" property="reservation05" />
+    <result column="reservation06" jdbcType="VARCHAR" property="reservation06" />
+    <result column="reservation07" jdbcType="VARCHAR" property="reservation07" />
+    <result column="reservation08" jdbcType="VARCHAR" property="reservation08" />
+    <result column="reservation09" jdbcType="VARCHAR" property="reservation09" />
+    <result column="reservation10" jdbcType="VARCHAR" property="reservation10" />
+    <result column="reservation11" jdbcType="VARCHAR" property="reservation11" />
+    <result column="reservation12" jdbcType="VARCHAR" property="reservation12" />
+    <result column="reservation13" jdbcType="VARCHAR" property="reservation13" />
+    <result column="reservation14" jdbcType="VARCHAR" property="reservation14" />
+    <result column="reservation15" jdbcType="VARCHAR" property="reservation15" />
+    <result column="reservation16" jdbcType="VARCHAR" property="reservation16" />
+    <result column="reservation17" jdbcType="VARCHAR" property="reservation17" />
+    <result column="reservation18" jdbcType="VARCHAR" property="reservation18" />
+    <result column="reservation19" jdbcType="VARCHAR" property="reservation19" />
+    <result column="reservation20" jdbcType="VARCHAR" property="reservation20" />
+    <result column="reservation21" jdbcType="VARCHAR" property="reservation21" />
+    <result column="reservation22" jdbcType="VARCHAR" property="reservation22" />
+    <result column="reservation23" jdbcType="VARCHAR" property="reservation23" />
+    <result column="reservation24" jdbcType="VARCHAR" property="reservation24" />
+    <result column="reservation25" jdbcType="VARCHAR" property="reservation25" />
+    <result column="reservation26" jdbcType="VARCHAR" property="reservation26" />
+    <result column="reservation27" jdbcType="VARCHAR" property="reservation27" />
+    <result column="reservation28" jdbcType="VARCHAR" property="reservation28" />
+    <result column="reservation29" jdbcType="VARCHAR" property="reservation29" />
+    <result column="reservation30" jdbcType="VARCHAR" property="reservation30" />
+    <result column="reservation31" jdbcType="VARCHAR" property="reservation31" />
+    <result column="reservation32" jdbcType="VARCHAR" property="reservation32" />
+    <result column="reservation33" jdbcType="VARCHAR" property="reservation33" />
+    <result column="reservation34" jdbcType="VARCHAR" property="reservation34" />
+    <result column="reservation35" jdbcType="VARCHAR" property="reservation35" />
+    <result column="reservation36" jdbcType="VARCHAR" property="reservation36" />
+    <result column="reservation37" jdbcType="VARCHAR" property="reservation37" />
+    <result column="reservation38" jdbcType="VARCHAR" property="reservation38" />
+    <result column="reservation39" jdbcType="VARCHAR" property="reservation39" />
+    <result column="reservation40" jdbcType="VARCHAR" property="reservation40" />
+    <result column="departmentcode" jdbcType="VARCHAR" property="departmentcode" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="createdtime" jdbcType="VARCHAR" property="createdtime" />
+    <result column="lastupdatedby" jdbcType="VARCHAR" property="lastupdatedby" />
+    <result column="lastupdatedtime" jdbcType="VARCHAR" property="lastupdatedtime" />
+    <result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+    <result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+    <result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, systemid, ajbh, ser_no, name, type, scen_systemid, target, fj, body, starttime, endtime,
+    jldd, creator_name, creator_dept, recorder, recorder_dept, target_xm, target_cym, 
+    target_xb, target_csrq, target_whcd, target_mz, target_hjszd, target_xzz, target_zjzl, 
+    target_zjhm, target_gzdw, target_lxdh, target_arrivaltime, target_lefttime, target_bm, 
+    target_ywm, target_gj, target_ch, target_jg, target_zzmm, target_jtqk, target_shjl, 
+    target_sfsgcf, target_sflyrs, target_sfpbfyry, trans_xm, trans_zy, trans_gzdw, trans_xzz, 
+    kcdd, jcz, kcryms, reservation01, reservation02, reservation03, reservation04, reservation05, 
+    reservation06, reservation07, reservation08, reservation09, reservation10, reservation11, 
+    reservation12, reservation13, reservation14, reservation15, reservation16, reservation17, 
+    reservation18, reservation19, reservation20, reservation21, reservation22, reservation23, 
+    reservation24, reservation25, reservation26, reservation27, reservation28, reservation29, 
+    reservation30, reservation31, reservation32, reservation33, reservation34, reservation35, 
+    reservation36, reservation37, reservation38, reservation39, reservation40, departmentcode, 
+    creator, createdtime, lastupdatedby, lastupdatedtime, uploadflag, downloadflag, deleteflag
+  </sql>
+</mapper>

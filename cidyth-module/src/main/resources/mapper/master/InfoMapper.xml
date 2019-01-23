@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.msg.dao.InfoMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.msg.entity.Info">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="xq_id" jdbcType="VARCHAR" property="xqId" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="xxzt" jdbcType="VARCHAR" property="xxzt" />
+		<result column="fbfw" jdbcType="VARCHAR" property="fbfw" />
+		<result column="qqlx" jdbcType="VARCHAR" property="qqlx" />
+		<result column="fbnr" jdbcType="VARCHAR" property="fbnr" />
+		<result column="fbry" jdbcType="VARCHAR" property="fbry" />
+		<result column="fbdw" jdbcType="VARCHAR" property="fbdw" />
+		<result column="fbdwbh" jdbcType="VARCHAR" property="fbdwbh" />
+		<result column="fbrq" jdbcType="TIMESTAMP" property="fbrq" />
+		<result column="sffj" jdbcType="INTEGER" property="sffj" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="lrry" jdbcType="INTEGER" property="lrry" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<result column="xgry" jdbcType="INTEGER" property="xgry" />
+		<result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, xq_id, ajbh, xxzt, fbfw, qqlx, fbnr, fbry, fbdw,fbdwbh,fbrq, sffj,
+		smbz, lrry, lrsj,
+		xgry, xgsj
+	</sql>
+
+	<select id="selectMonthlyInfoOfDept" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select MONTH(fbrq) ajbh,id,fbdwbh,fbdw
+		from t_info
+		<trim prefix="where" prefixOverrides="and">
+			<if test="year != null">
+				and YEAR(fbrq) = #{year}
+			</if>
+			<if test="monthList != null and monthList.size()>0">
+				and MONTH(fbrq) in
+				<foreach collection="monthList" item="month" open="("
+					separator="," close=")">
+					#{month}
+				</foreach>
+			</if>
+			<if test="deptIdList != null and deptIdList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="deptIdList" item="deptId">
+						or fbdwbh in
+						(#{deptId,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+		</trim>
+		order by ajbh
+	</select>
+	<select id="selectBySelective" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		SELECT
+			infoa.*
+		FROM t_info infoa LEFT JOIN (
+			SELECT
+				DISTINCT info_id
+			FROM t_info_accpt
+			<trim prefix="where" prefixOverrides="and">
+				<if test="acceptDeptIdList != null and acceptDeptIdList.size()>0">
+					and
+					<trim prefix="(" prefixOverrides="or" suffix=")">
+						<foreach collection="acceptDeptIdList" item="deptId">
+							or jsdwbh
+							in
+							(#{deptId,jdbcType=VARCHAR})
+						</foreach>
+					</trim>
+				</if>
+			</trim>
+		) infob
+		ON infoa.id = infob.info_id
+		WHERE 1=1
+		<if test="caseNoList != null and caseNoList.size()>0">
+			and
+			<trim prefix="(" prefixOverrides="or" suffix=")">
+				<foreach collection="caseNoList" item="caseNo">
+					or infoa.ajbh in
+					(#{caseNo,jdbcType=VARCHAR})
+				</foreach>
+			</trim>
+		</if>
+		<if test="fbry != null and !fbry.equals('')">
+			and infoa.fbry = #{fbry,jdbcType=VARCHAR}
+		</if>
+		UNION
+		SELECT
+			infoa.*
+			FROM t_info infoa INNER JOIN (
+			SELECT 
+				DISTINCT info_id
+			FROM t_info_accpt
+			<trim prefix="where" prefixOverrides="and">
+				<if test="acceptDeptIdList != null and acceptDeptIdList.size()>0">
+					and
+					<trim prefix="(" prefixOverrides="or" suffix=")">
+						<foreach collection="acceptDeptIdList" item="deptId">
+							or jsdwbh
+							in
+							(#{deptId,jdbcType=VARCHAR})
+						</foreach>
+					</trim>
+				</if>
+				<if test="acceptUserIdList != null and acceptUserIdList.size()>0">
+					and
+					<trim prefix="(" prefixOverrides="or" suffix=")">
+						<foreach collection="acceptUserIdList" item="userId">
+							or jsrybh in
+							(#{userId,jdbcType=VARCHAR})
+						</foreach>
+					</trim>
+				</if>
+			</trim>
+		) infob
+		ON infoa.id = infob.info_id
+		WHERE 1=1
+		<if test="caseNoList != null and caseNoList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="caseNoList" item="caseNo">
+						or infoa.ajbh in
+						(#{caseNo,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+		</if>
+	</select>
+
+	<resultMap id="InfoAcceptanceResultMap"
+		type="com.hyzs.cidyth.module.msg.entity.InfoAcceptance">
+		<result column="ajbh" property="ajbh" jdbcType="VARCHAR" />
+		<result column="info_id" property="infoId" jdbcType="BIGINT" />
+		<result column="jsdwbh" property="jsdwbh" jdbcType="VARCHAR" />
+		<result column="jsdwmc" property="jsdwmc" jdbcType="VARCHAR" />
+		<result column="jsrybh" property="jsrybh" jdbcType="VARCHAR" />
+		<result column="jsrxm" property="jsrxm" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insertInfoAccpt" parameterType="java.util.Map">
+		<if test="infoAcceptList != null and infoAcceptList.size()>0">
+			INSERT INTO t_info_accpt(ajbh,info_id,jsdwbh,jsdwmc,jsrybh,jsrxm)
+			VALUES
+			<foreach collection="infoAcceptList" item="infoAccept"
+				separator=",">
+				(#{infoAccept.ajbh},#{infoAccept.infoId},#{infoAccept.jsdwbh},#{infoAccept.jsdwmc},#{infoAccept.jsrybh},#{infoAccept.jsrxm})
+			</foreach>
+		</if>
+	</insert>
+
+	<select id="selectInfoAcceptByInfoId" parameterType="java.lang.Long"
+		resultMap="InfoAcceptanceResultMap">
+		select * from t_info_accpt where info_id = #{infoId}
+	</select>
+</mapper>

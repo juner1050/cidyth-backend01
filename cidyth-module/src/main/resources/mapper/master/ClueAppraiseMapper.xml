@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.appraise.dao.ClueAppraiseMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.appraise.entity.ClueAppraise">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="clue_id" jdbcType="VARCHAR" property="clueId" />
+    <result column="pfrdwbh" jdbcType="VARCHAR" property="pfrdwbh" />
+    <result column="pfrdwmc" jdbcType="VARCHAR" property="pfrdwmc" />
+    <result column="pfrbh" jdbcType="VARCHAR" property="pfrbh" />
+    <result column="pfrxm" jdbcType="VARCHAR" property="pfrxm" />
+    <result column="pffz" jdbcType="REAL" property="pffz" />
+    <result column="pfnr" jdbcType="VARCHAR" property="pfnr" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, clue_id, pfrdwbh, pfrdwmc, pfrbh, pfrxm, pffz, pfnr, lrsj, xgsj
+  </sql>
+</mapper>

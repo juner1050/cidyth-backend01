@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesGroupMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.base.entity.CasesGroup">
+		<!-- WARNING - @mbg.generated -->
+		<id column="zyId" jdbcType="BIGINT" property="zyId" />
+		<result column="sfyx" jdbcType="VARCHAR" property="sfyx" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="jgdm" jdbcType="VARCHAR" property="jgdm" />
+		<result column="jgmc" jdbcType="VARCHAR" property="jgmc" />
+		<result column="jybh" jdbcType="VARCHAR" property="jybh" />
+		<result column="jyxm" jdbcType="VARCHAR" property="jyxm" />
+		<result column="sjhm" jdbcType="VARCHAR" property="sjhm" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<result column="lrryjgdm" jdbcType="VARCHAR" property="lrryjgdm" />
+		<result column="lrryjgmc" jdbcType="VARCHAR" property="lrryjgmc" />
+		<result column="lrrybh" jdbcType="VARCHAR" property="lrrybh" />
+		<result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		zyId,sfyx,ajbh,jgdm,jgmc,jybh,jyxm,sjhm,smbz,lrsj,lrryjgdm,lrryjgmc,lrrybh,lrrymc
+	</sql>
+	<select id="selectCaseGroupsByAjbh" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_case_group where ajbh = #{ajbh} and sfyx='1'
+	</select>
+	<select id="isExist" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(zyId) from t_case_group where ajbh = #{ajbh} and jybh =
+		#{jybh} and sfyx='1'
+	</select>
+	<delete id="deleteCaseGroup" parameterType="java.util.Map">
+		delete from
+		t_case_group where ajbh = #{ajbh}
+		and jybh in
+		<foreach collection="jybhList" item="jybh" open="(" separator=","
+			close=")">
+			#{jybh}
+		</foreach>
+	</delete>
+
+	<insert id="batchInsertCaseGroups" parameterType="java.util.Map">
+		<if test="caseGroupList != null and caseGroupList.size()>0">
+			INSERT INTO t_case_group(ajbh,jgdm,jgmc,jybh,jyxm,sjhm,smbz,lrryjgdm,lrryjgmc,lrrybh,lrrymc)
+			VALUES
+			<foreach collection="caseGroupList" item="caseGroup"
+				separator=",">
+				(#{caseGroup.ajbh},#{caseGroup.jgdm},#{caseGroup.jgmc},#{caseGroup.jybh},#{caseGroup.jyxm},#{caseGroup.sjhm},#{caseGroup.smbz},#{caseGroup.lrryjgdm},#{caseGroup.lrryjgmc},#{caseGroup.lrrybh},#{caseGroup.lrrymc})
+			</foreach>
+		</if>
+	</insert>
+</mapper>

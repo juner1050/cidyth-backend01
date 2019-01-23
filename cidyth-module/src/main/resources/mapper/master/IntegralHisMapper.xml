@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.integral.dao.IntegralHisMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.integral.entity.IntegralHis">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+    <result column="jlry" jdbcType="VARCHAR" property="jlry" />
+    <result column="jlrymc" jdbcType="VARCHAR" property="jlrymc" />
+    <result column="jlryjg" jdbcType="VARCHAR" property="jlryjg" />
+    <result column="jlryjgmc" jdbcType="VARCHAR" property="jlryjgmc" />
+    <result column="rule_type" jdbcType="VARCHAR" property="ruleType" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="month" jdbcType="INTEGER" property="month" />
+    <result column="day" jdbcType="INTEGER" property="day" />
+    <result column="score" jdbcType="REAL" property="score" />
+    <result column="smbz" jdbcType="VARCHAR" property="smbz" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgry" jdbcType="VARCHAR" property="xgry" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="xgrymc" jdbcType="VARCHAR" property="xgrymc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, ajbh, jlry, jlrymc, jlryjg, jlryjgmc, rule_type, `year`, `month`, `day`, score, smbz,
+    lrry, lrsj, xgry, xgsj, lrrymc, xgrymc
+  </sql>
+
+  <select id="list" resultType="com.hyzs.cidyth.module.integral.vo.IntegralHisVO">
+    SELECT
+      master_his.id,
+      master_his.ajbh,
+      master_his.jlrymc,
+      master_his.jlryjgmc,
+      master_his.lrrymc,
+      master_his.lrsj,
+      if(integral_type=0, slave_config.upper_limit, master_his.score) as score
+    FROM t_integral_his master_his
+    LEFT JOIN t_integral_config slave_config on slave_config.rule_type = master_his.rule_type
+  </select>
+
+  <select id="countScore" resultType="Float">
+    select
+      sum(if(slave_config.integral_type=0, slave_config.upper_limit, master_his.score)) as score
+    from t_integral_his master_his
+    left join t_integral_config slave_config on slave_config.rule_type = master_his.rule_type
+    <where>
+      <if test="jlry != null and !jlry.equals('')">
+        and master_his.jlry = #{jlry}
+      </if>
+      <if test="ajbh != null and !ajbh.equals('')">
+        and master_his.ajbh = #{ajbh}
+      </if>
+      <if test="year != null and !year.equals('')">
+        and master_his.year = #{year}
+      </if>
+      <if test="month != null and !month.equals('')">
+        and master_his.month = #{month}
+      </if>
+    </where>
+  </select>
+
+  <select id="listCasesScore" resultType="com.hyzs.cidyth.module.integral.vo.IntegralHisVO">
+    SELECT
+        t2.*
+    FROM
+    (
+        SELECT
+            CASE
+        WHEN @rowtotal = t.score THEN
+            @rownum
+        WHEN @rowtotal := t.score THEN
+            @rownum :=@rownum + 1
+        WHEN @rowtotal = 0 THEN
+            @rownum :=@rownum + 1
+        END AS rank,
+        t.*
+    FROM
+        (
+            SELECT
+                master_his.ajbh,
+                master_his.jlry,
+                master_his.jlrymc,
+                master_his.jlryjg,
+                sum(
+
+                    IF (
+                        slave_config.integral_type = 0,
+                        slave_config.upper_limit,
+                        master_his.score
+                    )
+                ) AS score
+            FROM
+                t_integral_his master_his
+            LEFT JOIN t_integral_config slave_config ON slave_config.rule_type = master_his.rule_type
+            <where>
+                <if test="ajbh != null and !ajbh.equals('')">
+                    and master_his.ajbh = #{ajbh}
+                </if>
+            </where>
+            GROUP BY
+                master_his.jlry
+            ORDER BY
+                score DESC
+        ) t,
+        (
+            SELECT
+                @rownum := 0 ,@rowtotal := NULL
+        ) AS aaa
+    ) t2
+  </select>
+
+  <select id="nodeScore" resultType="String">
+      select concat_ws(',', rule_type, score) from (
+          select rule_type, ifnull(sum(score), 0) as score from (
+              select
+              master_rule.rule_type,
+              IF (
+              slave_config.integral_type = 0,
+              slave_config.upper_limit,
+              slave_his.score
+              ) as score
+              from t_integral_rule master_rule
+              left join t_integral_his slave_his on slave_his.rule_type = master_rule.rule_type and slave_his.jlry = #{jlry}
+              left join t_integral_config slave_config on slave_config.rule_type = master_rule.rule_type and slave_config.rule_type = slave_his.rule_type
+              <where>
+                  and master_rule.rule_type IN
+                  <if test="lsNodeName != null and lsNodeName.size() > 0">
+                      <foreach collection="lsNodeName" item="item" open="(" separator="," close=")">
+                          #{item}
+                      </foreach>
+                  </if>
+              </where>
+          ) t
+          group by rule_type
+      ) t2
+
+  </select>
+
+    <select id="listRankScore" resultType="com.hyzs.cidyth.module.integral.vo.IntegralHisRank">
+        select
+            his.jlry,
+            his.jlrymc,
+			his.jlryjg,
+            sum(his.score) score
+        from (
+            SELECT
+                his.jlry,
+                his.jlrymc,
+				substr(his.jlryjg, 1, 6) jlryjg,
+                (case when config.integral_type = 1 then his.score else config.upper_limit end) score
+            from t_integral_his his
+            left join t_integral_config config on config.rule_type = his.rule_type
+        ) his
+        group by his.jlry, his.jlrymc
+        order by score desc
+    </select>
+
+</mapper>

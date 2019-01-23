@@ -1,0 +1,12 @@
+此模块用于放置 项目中的业务模块源码:
+com.hyzs.cidyth.module.archives ------------------- 档案模块
+com.hyzs.cidyth.module.cases ------------------- 案件模块
+com.hyzs.cidyth.module.clue ------------------- 线索模块
+com.hyzs.cidyth.module.dashboard ------------------- 看板模块
+com.hyzs.cidyth.module.demand ---------------------- 需求模块
+com.hyzs.cidyth.module.msg ----------------------- 信息模块
+com.hyzs.cidyth.module.reply --------------------- 回复模块
+com.hyzs.cidyth.module.mind ------------------- 思维导图
+com.hyzs.cidyth.module.uc ------------------- 用户中心公共服务
+com.hyzs.cidyth.module.appraise---------------评价
+com.hyzs.cidyth.module.praise-----------------点赞

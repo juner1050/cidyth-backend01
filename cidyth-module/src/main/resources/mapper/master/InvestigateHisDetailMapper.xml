@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hyzs.cidyth.module.investigatehis.dao.InvestigateHisDetailMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.investigatehis.entity.InvestigateHisDetail">
+		<!-- WARNING - @mbg.generated -->
+		<id column="ID" jdbcType="BIGINT" property="id" />
+		<result column="INVESTIGATE_HIS_ID" jdbcType="BIGINT" property="investigateHisId" />
+		<result column="DETAIL_CONTENT" jdbcType="VARCHAR" property="detailContent" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		ID, INVESTIGATE_HIS_ID, DETAIL_CONTENT,CREATE_TIME
+	</sql>
+	<select id="selectDetails" resultMap="BaseResultMap"
+		parameterType="com.hyzs.cidyth.module.investigatehis.entity.InvestigateHis">
+		SELECT
+			CREATE_TIME,DETAIL_CONTENT
+		FROM T_INVESTIGATE_HIS_DETAIL detail
+		WHERE EXISTS (
+			SELECT id
+			FROM t_investigate_his his
+			WHERE his.id = detail.INVESTIGATE_HIS_ID
+			<if test="createdById != null and !createdById.equals('')">
+				AND CREATED_BY_ID = ${createdById}
+			</if>
+			<if test="suspectId != null and !suspectId.equals('')">
+				AND SUSPECT_ID = ${suspectId}
+			</if>
+			<if test="caseNo != null and !caseNo.equals('')">
+				AND CASE_NO = ${caseNo}
+			</if>
+			<if test="suspectInfoType != null and !suspectInfoType.equals('')">
+				AND SUSPECT_INFO_TYPE = ${suspectInfoType}
+			</if>)
+	</select>
+</mapper>

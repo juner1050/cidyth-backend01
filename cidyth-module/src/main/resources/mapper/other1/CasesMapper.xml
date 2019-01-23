@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesCidMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.Cases">
+		<!-- WARNING - @mbg.generated -->
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="sljsdw" jdbcType="VARCHAR" property="sljsdw" />
+		<result column="ajstate" jdbcType="VARCHAR" property="ajstate" />
+		<result column="zazt" jdbcType="VARCHAR" property="zazt" />
+		<result column="sl_bjslh" jdbcType="VARCHAR" property="slBjslh" />
+		<result column="sl_jjfs" jdbcType="VARCHAR" property="slJjfs" />
+		<result column="ajlx" jdbcType="VARCHAR" property="ajlx" />
+		<result column="ab" jdbcType="VARCHAR" property="ab" />
+		<result column="zabz" jdbcType="VARCHAR" property="zabz" />
+		<result column="ajmc" jdbcType="VARCHAR" property="ajmc" />
+		<result column="ajwh" jdbcType="VARCHAR" property="ajwh" />
+		<result column="sljjsj" jdbcType="TIMESTAMP" property="sljjsj" />
+		<result column="slfxrq" jdbcType="TIMESTAMP" property="slfxrq" />
+		<result column="fasjcz" jdbcType="TIMESTAMP" property="fasjcz" />
+		<result column="fasjzz" jdbcType="TIMESTAMP" property="fasjzz" />
+		<result column="fadd_qx" jdbcType="VARCHAR" property="faddQx" />
+		<result column="fadd_jd" jdbcType="VARCHAR" property="faddJd" />
+		<result column="ajssjq" jdbcType="VARCHAR" property="ajssjq" />
+		<result column="fadd" jdbcType="VARCHAR" property="fadd" />
+		<result column="sssq" jdbcType="VARCHAR" property="sssq" />
+		<result column="fady" jdbcType="VARCHAR" property="fady" />
+		<result column="slfacs" jdbcType="VARCHAR" property="slfacs" />
+		<result column="fxxs" jdbcType="VARCHAR" property="fxxs" />
+		<result column="ajwhcd" jdbcType="VARCHAR" property="ajwhcd" />
+		<result column="blyy" jdbcType="VARCHAR" property="blyy" />
+		<result column="zyaq" jdbcType="VARCHAR" property="zyaq" />
+		<result column="xzsj" jdbcType="VARCHAR" property="xzsj" />
+		<result column="xzcs" jdbcType="VARCHAR" property="xzcs" />
+		<result column="xzdx" jdbcType="VARCHAR" property="xzdx" />
+		<result column="xzwp" jdbcType="VARCHAR" property="xzwp" />
+		<result column="zagj" jdbcType="VARCHAR" property="zagj" />
+		<result column="xzbw" jdbcType="VARCHAR" property="xzbw" />
+		<result column="zars" jdbcType="VARCHAR" property="zars" />
+		<result column="sdtd" jdbcType="VARCHAR" property="sdtd" />
+		<result column="swrs" jdbcType="VARCHAR" property="swrs" />
+		<result column="ssrs" jdbcType="VARCHAR" property="ssrs" />
+		<result column="ssjz" jdbcType="VARCHAR" property="ssjz" />
+		<result column="sazz" jdbcType="VARCHAR" property="sazz" />
+		<result column="lasj" jdbcType="TIMESTAMP" property="lasj" />
+		<result column="pasj" jdbcType="TIMESTAMP" property="pasj" />
+		<result column="ja_jasj" jdbcType="TIMESTAMP" property="jaJasj" />
+		<result column="xa_xasj" jdbcType="TIMESTAMP" property="xaXasj" />
+		<result column="yssj" jdbcType="TIMESTAMP" property="yssj" />
+		<result column="sljjdw" jdbcType="VARCHAR" property="sljjdw" />
+		<result column="sl_lrr" jdbcType="VARCHAR" property="slLrr" />
+		<result column="sl_lrsj" jdbcType="TIMESTAMP" property="slLrsj" />
+		<result column="sljjry" jdbcType="VARCHAR" property="sljjry" />
+		<result column="sl_slrxm" jdbcType="VARCHAR" property="slSlrxm" />
+		<result column="sl_slsj" jdbcType="TIMESTAMP" property="slSlsj" />
+		<result column="slfaqh" jdbcType="VARCHAR" property="slfaqh" />
+		<result column="ladw" jdbcType="VARCHAR" property="ladw" />
+		<result column="ajlary" jdbcType="VARCHAR" property="ajlary" />
+		<result column="zbdw" jdbcType="VARCHAR" property="zbdw" />
+		<result column="ajzbry" jdbcType="VARCHAR" property="ajzbry" />
+		<result column="ajxbry" jdbcType="VARCHAR" property="ajxbry" />
+		<result column="ajbarp" jdbcType="VARCHAR" property="ajbarp" />
+		<result column="la_lrr" jdbcType="VARCHAR" property="laLrr" />
+		<result column="la_lrsj" jdbcType="TIMESTAMP" property="laLrsj" />
+		<result column="la_pzr" jdbcType="VARCHAR" property="laPzr" />
+		<result column="la_pzsj" jdbcType="TIMESTAMP" property="laPzsj" />
+		<result column="la_zhxgr" jdbcType="VARCHAR" property="laZhxgr" />
+		<result column="la_zhxgsj" jdbcType="TIMESTAMP" property="laZhxgsj" />
+		<result column="la_psstate" jdbcType="VARCHAR" property="laPsstate" />
+		<result column="dbxx" jdbcType="VARCHAR" property="dbxx" />
+		<result column="ajly" jdbcType="VARCHAR" property="ajly" />
+		<result column="bz" jdbcType="VARCHAR" property="bz" />
+		<result column="departmentcode" jdbcType="VARCHAR" property="departmentcode" />
+		<result column="creator" jdbcType="VARCHAR" property="creator" />
+		<result column="createdtime" jdbcType="TIMESTAMP" property="createdtime" />
+		<result column="securitygrade" jdbcType="VARCHAR" property="securitygrade" />
+		<result column="lastupdatedtime" jdbcType="TIMESTAMP" property="lastupdatedtime" />
+		<result column="refreshtime" jdbcType="TIMESTAMP" property="refreshtime" />
+		<result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+		<result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+		<result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+		<result column="ysdw" jdbcType="VARCHAR" property="ysdw" />
+		<result column="yscbr" jdbcType="VARCHAR" property="yscbr" />
+		<result column="ysdwdh" jdbcType="VARCHAR" property="ysdwdh" />
+		<result column="yssasj" jdbcType="TIMESTAMP" property="yssasj" />
+		<result column="ystcsj" jdbcType="TIMESTAMP" property="ystcsj" />
+		<result column="whssjz" jdbcType="VARCHAR" property="whssjz" />
+		<result column="dbjb" jdbcType="VARCHAR" property="dbjb" />
+		<result column="jtajly" jdbcType="VARCHAR" property="jtajly" />
+		<result column="fzztlx" jdbcType="VARCHAR" property="fzztlx" />
+		<result column="sfsw" jdbcType="VARCHAR" property="sfsw" />
+		<result column="sjgjdq" jdbcType="VARCHAR" property="sjgjdq" />
+		<result column="yishensj" jdbcType="TIMESTAMP" property="yishensj" />
+		<result column="essj" jdbcType="TIMESTAMP" property="essj" />
+		<result column="ysdw_new" jdbcType="VARCHAR" property="ysdwNew" />
+		<result column="ysdwdh_new" jdbcType="VARCHAR" property="ysdwdhNew" />
+		<result column="yscbr_new" jdbcType="VARCHAR" property="yscbrNew" />
+		<result column="yssj_new" jdbcType="TIMESTAMP" property="yssjNew" />
+		<result column="datastate" jdbcType="VARCHAR" property="datastate" />
+		<result column="datacheck" jdbcType="VARCHAR" property="datacheck" />
+		<result column="queryid" jdbcType="VARCHAR" property="queryid" />
+		<result column="jzbh" jdbcType="VARCHAR" property="jzbh" />
+		<result column="rkdjsj" jdbcType="TIMESTAMP" property="rkdjsj" />
+		<result column="rkgxsj" jdbcType="TIMESTAMP" property="rkgxsj" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		ajbh, sljsdw, ajstate, zazt, sl_bjslh, sl_jjfs, ajlx, ab, zabz,
+		ajmc, ajwh, sljjsj,
+		slfxrq, fasjcz, fasjzz, fadd_qx, fadd_jd, ajssjq,
+		fadd, sssq, fady, slfacs,
+		fxxs,
+		ajwhcd, blyy, zyaq, xzsj, xzcs, xzdx,
+		xzwp, zagj, xzbw, zars, sdtd, swrs,
+		ssrs, ssjz,
+		sazz, lasj, pasj,
+		ja_jasj, xa_xasj, yssj, sljjdw, sl_lrr, sl_lrsj, sljjry,
+		sl_slrxm,
+		sl_slsj, slfaqh, ladw, ajlary, zbdw, ajzbry, ajxbry, ajbarp, la_lrr,
+		la_lrsj,
+		la_pzr,
+		la_pzsj, la_zhxgr, la_zhxgsj, la_psstate, dbxx, ajly,
+		bz, departmentcode,
+		creator,
+		createdtime, securitygrade,
+		lastupdatedtime, refreshtime, uploadflag,
+		downloadflag,
+		deleteflag,
+		ysdw, yscbr, ysdwdh, yssasj, ystcsj, whssjz, dbjb, jtajly, fzztlx,
+		sfsw,
+		sjgjdq, yishensj, essj, ysdw_new, ysdwdh_new, yscbr_new,
+		yssj_new, datastate,
+		datacheck,
+		queryid, jzbh, rkdjsj, rkgxsj
+	</sql>
+
+	<select id="selectListPackCases" resultMap="BaseResultMap" >
+	select
+	ajbh, ajmc, ajzbry, zbdw, ab, fasjcz, lasj, sljsdw
+	from v_asj_aj
+	<where>
+		<if test="beginLasj != null and !beginLasj.equals('') and endLasj != null and !endLasj.equals('')">
+			<![CDATA[
+				and lasj >= to_date(substr(#{beginLasj}, 1, 10),'yyyy-MM-dd')
+				and lasj <= to_date(substr(#{endLasj}, 1, 10),'yyyy-MM-dd')
+			]]>
+		</if>
+		<if test="fasjcz != null and !fasjcz.equals('') and fasjzz != null and !fasjzz.equals('')">
+			<![CDATA[
+				and fasjcz >= to_date(substr(#{fasjcz}, 1, 10),'yyyy-MM-dd')
+				and fasjcz <= to_date(substr(#{fasjzz}, 1, 10),'yyyy-MM-dd')
+			]]>
+		</if>
+		<if test="ajbh != null and !ajbh.equals('')">
+			and ajbh like #{ajbh} || '%'
+		</if>
+		<if test="ajmc != null and !ajmc.equals('')">
+			and ajmc like  '%' || #{ajmc} || '%'
+		</if>
+		<if test="ajzbry != null and !ajzbry.equals('')">
+			and ajzbry = #{ajzbry}
+		</if>
+		<if test="ajstate != null and !ajstate.equals('')">
+			and ajstate = #{ajstate}
+		</if>
+		<if test="sljsdw != null and !sljsdw.equals('')">
+			and sljsdw like #{sljsdw} || '%'
+		</if>
+		</where>
+	</select>
+	<select id="selectCaseByAjbh" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List"/>
+		from v_asj_aj
+		where ajbh = #{ajbh}
+	</select>
+	
+	<select id="selectCasesInLastNDays" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List"/>
+		from v_asj_aj 
+		<where>
+			<![CDATA[
+				lasj >= to_date(to_char(TRUNC(SYSDATE-#{days}),'yyyy-mm-dd hh24:mi:ss'),'yyyy-mm-dd hh24:mi:ss')
+				AND lasj <= TRUNC(SYSDATE)+1-1/86400
+	  		]]>
+		</where>
+	</select>
+</mapper>

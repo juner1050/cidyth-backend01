@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.notice.dao.NoticeMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.notice.entity.Notice">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="tznr" jdbcType="VARCHAR" property="tznr" />
+		<result column="tzsj" jdbcType="TIMESTAMP" property="tzsj" />
+		<result column="jsrbh" jdbcType="VARCHAR" property="jsrbh" />
+		<result column="jsrmc" jdbcType="VARCHAR" property="jsrmc" />
+		<result column="jsrjgbh" jdbcType="VARCHAR" property="jsrjgbh" />
+		<result column="jsrjgmc" jdbcType="VARCHAR" property="jsrjgmc" />
+		<result column="fsrbh" jdbcType="VARCHAR" property="fsrbh" />
+		<result column="fsrmc" jdbcType="VARCHAR" property="fsrmc" />
+		<result column="fsrjgbh" jdbcType="VARCHAR" property="fsrjgbh" />
+		<result column="fsrjgmc" jdbcType="VARCHAR" property="fsrjgmc" />
+		<result column="anchor" jdbcType="VARCHAR" property="anchor" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="tzmbid" jdbcType="INTEGER" property="tzmbid" />
+		<result column="tzmb" jdbcType="VARCHAR" property="tzmb" />
+		<result column="tzlyid" jdbcType="INTEGER" property="tzlyid" />
+		<result column="tzly" jdbcType="VARCHAR" property="tzly" />
+		<result column="sfyd" jdbcType="VARCHAR" property="sfyd" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id,tznr,tzsj, jsrbh, jsrmc, jsrjgbh, jsrjgmc, fsrbh, fsrmc, fsrjgbh, fsrjgmc, anchor,sfyd, ajbh, tzmbid, tzmb, tzlyid, tzly
+	</sql>
+	<insert id="insertBatch" parameterType="java.util.Map">
+		INSERT INTO t_notifaction(
+			tznr, anchor, sfyd,
+			jsrbh, jsrmc, jsrjgbh, jsrjgmc,
+			fsrbh, fsrmc, fsrjgbh, fsrjgmc,
+			ajbh, tzmbid, tzmb, tzlyid, tzly
+		)
+		VALUES
+        <foreach collection="noticeList" item="notice" separator=",">
+			(
+				#{notice.tznr}, #{notice.anchor}, #{notice.sfyd},
+				#{notice.jsrbh}, #{notice.jsrmc}, #{notice.jsrjgbh}, #{notice.jsrjgmc},
+				#{notice.fsrbh}, #{notice.fsrmc}, #{notice.fsrjgbh}, #{notice.fsrjgmc},
+				#{notice.ajbh}, #{notice.tzmbid}, #{notice.tzmb}, #{notice.tzlyid}, #{notice.tzly}
+			)
+		</foreach>
+	</insert>
+	<select id="selectNotRead" resultType="Map">
+		select
+		fsrbh, fsrmc, fsrjgbh, fsrjgmc, tzly, count(*) count, group_concat(tzmbid, '#', id) id
+		from t_notifaction where sfyd='0' and
+		jsrbh = #{jsrbh} group by fsrbh, tzly
+	</select>
+	<delete id="readBatch" parameterType="java.util.Map">
+		delete from t_notifaction where jsrbh = #{jsrbh}
+		<if test="idList != null and idList.size()>0">
+			and id in
+			<foreach collection="idList" item="id" open="(" separator=","
+				close=")">
+				#{id}
+			</foreach>
+		</if>
+	</delete>
+</mapper>

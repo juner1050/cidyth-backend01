@@ -1,0 +1,68 @@
+server:
+    context-path: /cid-app
+    port: 8282
+logging:
+    config: classpath:logback-boot.xml
+spring:
+    http:
+        multipart:
+          max-file-size: 20Mb
+          max-request-size: 200Mb
+        encoding:
+            charset: UTF-8
+    jackson:
+           date-format: yyyy-MM-dd HH:mm:ss
+           timeZone: Asia/Shanghai
+    resources:
+           chain:
+                  enabled: true
+##配置加密参数(salt)
+jasypt:
+  encryptor:
+    password: 123456
+#分页配置
+pagehelper:
+  reasonable: false
+  autoRuntimeDialect: true
+  supportMethodsArguments: true
+  returnPageInfo: check
+  params: count=countSql
+
+## tkMapperHelper设置
+tkMapperHelper:
+    mappers: com.hyzs.psd.gafa.daf.mybatis.tk.common.Mapper
+
+## master 数据源配置
+master:
+    datasource:
+        url: jdbc:mysql://68.64.17.36:3306/cid_new?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+## other1 数据源配置
+other1:
+    datasource:
+        url: jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=68.64.17.2)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=CIDRAC)))
+        username: RHZZ_QUERY
+        password: QUERY_RHZZ
+## xk 数据源配置(现勘数据库)
+xk:
+    datasource:
+        url: jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.42.11.105)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)))
+        username: RHZZ_QUERY
+        password: QUERY_RHZZ
+## xj 数据源配置(刑技数据库)
+xj:
+    datasource:
+        url: jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.42.1.200)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=nyy)))
+        username: xjpt2_cda
+        password: cda4403
+##用户中心服务
+uc:
+  serviceUrlPrefix: http://68.64.17.37:8080/hyzs-uc/uc/
+
+## tafa框架核心配置
+gafa:
+    validation:
+       excludePackages: org.springframework,springfox
+    core:
+     skipClassNames: org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration,org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration

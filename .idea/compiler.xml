@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cidyth-app" />
+        <module name="cidyth-common" />
+        <module name="cidyth-communicate" />
+        <module name="cidyth-core" />
+        <module name="cidyth-module" />
+        <module name="cidyth-web-portal" />
+        <module name="cidyth-websocket" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cidyth-app" target="1.8" />
+      <module name="cidyth-backend" target="1.8" />
+      <module name="cidyth-common" target="1.8" />
+      <module name="cidyth-communicate" target="1.8" />
+      <module name="cidyth-core" target="1.8" />
+      <module name="cidyth-module" target="1.8" />
+      <module name="cidyth-web-portal" target="1.8" />
+      <module name="cidyth-websocket" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

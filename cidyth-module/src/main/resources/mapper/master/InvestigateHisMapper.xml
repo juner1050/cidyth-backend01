@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.investigatehis.dao.InvestigateHisMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.investigatehis.entity.InvestigateHis">
+		<!-- WARNING - @mbg.generated -->
+		<id column="ID" jdbcType="BIGINT" property="id" />
+		<result column="CREATED_BY_ID" jdbcType="VARCHAR" property="createdById" />
+		<result column="CREATED_BY_NAME" jdbcType="VARCHAR" property="createdByName" />
+		<result column="SUSPECT_ID" jdbcType="VARCHAR" property="suspectId" />
+		<result column="SUSPECT_INFO_TYPE" jdbcType="VARCHAR" property="suspectInfoType" />
+		<result column="CASE_NO" jdbcType="VARCHAR" property="caseNo" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		ID, CREATED_BY_ID, CREATED_BY_NAME, SUSPECT_ID, SUSPECT_INFO_TYPE,
+		CASE_NO, CREATE_TIME
+	</sql>
+</mapper>

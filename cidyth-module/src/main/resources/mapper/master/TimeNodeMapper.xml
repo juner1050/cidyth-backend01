@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.time.dao.TimeNodeMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.time.entity.TimeNode">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+    <result column="reference_id" jdbcType="INTEGER" property="referenceId" />
+    <result column="regerence_type" jdbcType="VARCHAR" property="regerenceType" />
+    <result column="send_org_code" jdbcType="VARCHAR" property="sendOrgCode" />
+    <result column="send_org_name" jdbcType="VARCHAR" property="sendOrgName" />
+    <result column="send_title" jdbcType="VARCHAR" property="sendTitle" />
+    <result column="send_content" jdbcType="VARCHAR" property="sendContent" />
+    <result column="receive_org_code" jdbcType="VARCHAR" property="receiveOrgCode" />
+    <result column="receive_org_name" jdbcType="VARCHAR" property="receiveOrgName" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, ajbh, reference_id, regerence_type, send_org_code, send_org_name, send_title, 
+    send_content, receive_org_code, receive_org_name, lrry, lrrymc, lrsj
+  </sql>
+</mapper>

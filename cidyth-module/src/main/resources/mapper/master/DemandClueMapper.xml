@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.clue.dao.DemandClueMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.clue.entity.DemandClue">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="demand_id" jdbcType="INTEGER" property="demandId" />
+		<result column="clue_id" jdbcType="INTEGER" property="clueId" />
+		<result column="clue_type" jdbcType="INTEGER" property="clueType" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, demand_id, clue_id, clue_type
+	</sql>
+
+	<select id="selectClueByDemandIdList" parameterType="java.util.Map"
+		resultMap="com.hyzs.cidyth.module.clue.dao.ClueMapper.BaseResultMap">
+		select a.*
+		from t_clue a INNER JOIN (select DISTINCT clue_id
+		from
+		t_demand_clue
+		<trim prefix="where" prefixOverrides="and">
+			<if test="clueType != null">
+				and clue_type = #{clueType}
+			</if>
+			<if test="demandIdList != null and demandIdList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="demandIdList" item="demandId">
+						or demand_id in
+						(#{demandId,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+		</trim>
+		) b
+		on a.id = b.clue_id
+	</select>
+	
+	<select id="selectBySelective" parameterType="com.hyzs.cidyth.module.clue.entity.DemandClue" resultMap="BaseResultMap">
+		select 
+			<include refid="Base_Column_List"/>
+		from t_demand_clue
+		where 1=1
+		<if test="demandId != null">
+			and demand_id = #{demandId}
+		</if>
+		<if test="clueId != null">
+			and clue_id = #{clueId}
+		</if>
+		<if test="clueType != null">
+			and clue_type = #{clueType}
+		</if>
+	</select>
+	
+	<select id="selectMonthlyClueOfDept" parameterType="java.util.Map"
+		resultMap="com.hyzs.cidyth.module.clue.dao.ClueMapper.BaseResultMap">
+		select a.fkdwbh,a.fkdw,count(a.fkdwbh) sffj
+		from t_clue a INNER JOIN
+		(select DISTINCT clue_id
+		from t_demand_clue
+		where 1=1
+		<if test="clueType != null">
+			and clue_type = #{clueType}
+		</if>
+		) b
+		on a.id = b.clue_id
+		where 1=1
+		<if test="year != null">
+			and YEAR(a.fkrq) = #{year}
+		</if>
+		<if test="monthList != null and monthList.size()>0">
+			and MONTH(a.fkrq) in
+			<foreach collection="monthList" item="month" open="("
+				separator="," close=")">
+				#{month}
+			</foreach>
+		</if>
+		<if test="deptIdList != null and deptIdList.size()>0">
+			and
+			<trim prefix="(" prefixOverrides="or" suffix=")">
+				<foreach collection="deptIdList" item="deptId">
+					or a.fkdwbh in
+					(#{deptId,jdbcType=VARCHAR})
+				</foreach>
+			</trim>
+		</if>
+		group by a.fkdwbh,a.fkdw
+	</select>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.attachment.dao.AttachmentMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.attachment.entity.Attachment">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="reference_id" jdbcType="VARCHAR" property="referenceId" />
+		<result column="fjlx" jdbcType="VARCHAR" property="fjlx" />
+		<result column="file_id" jdbcType="VARCHAR" property="fileId" />
+		<result column="fjmc" jdbcType="VARCHAR" property="fjmc" />
+		<result column="wjgs" jdbcType="VARCHAR" property="wjgs" />
+		<result column="wjdx" jdbcType="BIGINT" property="wjdx" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="lrry" jdbcType="VARCHAR" property="lrry" />
+		<result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, reference_id, fjlx, file_id, fjmc,wjdx,smbz,lrry, lrrymc,lrsj, wjgs
+	</sql>
+	<select id="selectByReferenceId$AttachmentType" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_enclosure where 1=1
+		<if test="referenceId != null and !referenceId.equals('')">
+			and reference_id = #{referenceId,jdbcType=VARCHAR}
+		</if>
+		<if test="attachmentType != null and !attachmentType.equals('')">
+			and fjlx = #{attachmentType,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="getAttachmentByMaxId" resultMap="BaseResultMap">
+		select * from t_enclosure where id = (
+			SELECT max(id) FROM t_enclosure where reference_id = #{id}
+		)
+	</select>
+</mapper>

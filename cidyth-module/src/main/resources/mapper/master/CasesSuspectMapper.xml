@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesSuspectMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.CasesSuspect">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="rybh" jdbcType="VARCHAR" property="rybh" />
+    <result column="zzdxzqh" jdbcType="VARCHAR" property="zzdxzqh" />
+    <result column="ywgxbm" jdbcType="VARCHAR" property="ywgxbm" />
+    <result column="xrzwbh" jdbcType="VARCHAR" property="xrzwbh" />
+    <result column="zwbh" jdbcType="VARCHAR" property="zwbh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="ywx" jdbcType="VARCHAR" property="ywx" />
+    <result column="ywm" jdbcType="VARCHAR" property="ywm" />
+    <result column="bm" jdbcType="VARCHAR" property="bm" />
+    <result column="byname" jdbcType="VARCHAR" property="byname" />
+    <result column="csrq" jdbcType="VARCHAR" property="csrq" />
+    <result column="birthdayinend" jdbcType="VARCHAR" property="birthdayinend" />
+    <result column="xb" jdbcType="VARCHAR" property="xb" />
+    <result column="gj" jdbcType="VARCHAR" property="gj" />
+    <result column="zjzl" jdbcType="VARCHAR" property="zjzl" />
+    <result column="zjhm" jdbcType="VARCHAR" property="zjhm" />
+    <result column="mz" jdbcType="VARCHAR" property="mz" />
+    <result column="rywhcd" jdbcType="VARCHAR" property="rywhcd" />
+    <result column="hjdz" jdbcType="VARCHAR" property="hjdz" />
+    <result column="xzqh" jdbcType="VARCHAR" property="xzqh" />
+    <result column="zhch" jdbcType="VARCHAR" property="zhch" />
+    <result column="xxdzms" jdbcType="VARCHAR" property="xxdzms" />
+    <result column="gzdw" jdbcType="VARCHAR" property="gzdw" />
+    <result column="ky" jdbcType="VARCHAR" property="ky" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="qtzjlx1" jdbcType="VARCHAR" property="qtzjlx1" />
+    <result column="qtzjhm1" jdbcType="VARCHAR" property="qtzjhm1" />
+    <result column="qtzjlx2" jdbcType="VARCHAR" property="qtzjlx2" />
+    <result column="qtzjhm2" jdbcType="VARCHAR" property="qtzjhm2" />
+    <result column="qtzjlx3" jdbcType="VARCHAR" property="qtzjlx3" />
+    <result column="qtzjhm3" jdbcType="VARCHAR" property="qtzjhm3" />
+    <result column="sf" jdbcType="VARCHAR" property="sf" />
+    <result column="sfxd" jdbcType="VARCHAR" property="sfxd" />
+    <result column="ljd" jdbcType="VARCHAR" property="ljd" />
+    <result column="jzyy" jdbcType="VARCHAR" property="jzyy" />
+    <result column="sg" jdbcType="VARCHAR" property="sg" />
+    <result column="lx" jdbcType="VARCHAR" property="lx" />
+    <result column="tx" jdbcType="VARCHAR" property="tx" />
+    <result column="xx" jdbcType="VARCHAR" property="xx" />
+    <result column="tmtz" jdbcType="VARCHAR" property="tmtz" />
+    <result column="zagj" jdbcType="VARCHAR" property="zagj" />
+    <result column="sdtd" jdbcType="VARCHAR" property="sdtd" />
+    <result column="xzsj" jdbcType="VARCHAR" property="xzsj" />
+    <result column="xzcs" jdbcType="VARCHAR" property="xzcs" />
+    <result column="xzdx" jdbcType="VARCHAR" property="xzdx" />
+    <result column="rylx" jdbcType="VARCHAR" property="rylx" />
+    <result column="rystate" jdbcType="VARCHAR" property="rystate" />
+    <result column="sazz" jdbcType="VARCHAR" property="sazz" />
+    <result column="ssje" jdbcType="VARCHAR" property="ssje" />
+    <result column="qfqk" jdbcType="VARCHAR" property="qfqk" />
+    <result column="swqk" jdbcType="VARCHAR" property="swqk" />
+    <result column="zcf" jdbcType="VARCHAR" property="zcf" />
+    <result column="wfjl" jdbcType="VARCHAR" property="wfjl" />
+    <result column="lrdw" jdbcType="VARCHAR" property="lrdw" />
+    <result column="lrsj" jdbcType="VARCHAR" property="lrsj" />
+    <result column="lrr" jdbcType="VARCHAR" property="lrr" />
+    <result column="tlsy" jdbcType="VARCHAR" property="tlsy" />
+    <result column="lhyy" jdbcType="VARCHAR" property="lhyy" />
+    <result column="qzzlqz" jdbcType="VARCHAR" property="qzzlqz" />
+    <result column="qzhm" jdbcType="VARCHAR" property="qzhm" />
+    <result column="qzqfd" jdbcType="VARCHAR" property="qzqfd" />
+    <result column="lxrxm" jdbcType="VARCHAR" property="lxrxm" />
+    <result column="lxrdh" jdbcType="VARCHAR" property="lxrdh" />
+    <result column="jdrmc" jdbcType="VARCHAR" property="jdrmc" />
+    <result column="sfzy" jdbcType="VARCHAR" property="sfzy" />
+    <result column="jiguan" jdbcType="VARCHAR" property="jiguan" />
+    <result column="zy" jdbcType="VARCHAR" property="zy" />
+    <result column="ryjs" jdbcType="VARCHAR" property="ryjs" />
+    <result column="ab" jdbcType="VARCHAR" property="ab" />
+    <result column="wfqk" jdbcType="VARCHAR" property="wfqk" />
+    <result column="swztqk" jdbcType="VARCHAR" property="swztqk" />
+    <result column="cs" jdbcType="VARCHAR" property="cs" />
+    <result column="cszxrq" jdbcType="VARCHAR" property="cszxrq" />
+    <result column="xzfs" jdbcType="VARCHAR" property="xzfs" />
+    <result column="bz" jdbcType="VARCHAR" property="bz" />
+    <result column="departmentcode" jdbcType="VARCHAR" property="departmentcode" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="createdtime" jdbcType="VARCHAR" property="createdtime" />
+    <result column="securitygrade" jdbcType="VARCHAR" property="securitygrade" />
+    <result column="reservation01" jdbcType="VARCHAR" property="reservation01" />
+    <result column="reservation02" jdbcType="VARCHAR" property="reservation02" />
+    <result column="reservation03" jdbcType="VARCHAR" property="reservation03" />
+    <result column="reservation04" jdbcType="VARCHAR" property="reservation04" />
+    <result column="reservation05" jdbcType="VARCHAR" property="reservation05" />
+    <result column="reservation06" jdbcType="VARCHAR" property="reservation06" />
+    <result column="reservation07" jdbcType="VARCHAR" property="reservation07" />
+    <result column="reservation08" jdbcType="VARCHAR" property="reservation08" />
+    <result column="reservation09" jdbcType="VARCHAR" property="reservation09" />
+    <result column="reservation10" jdbcType="VARCHAR" property="reservation10" />
+    <result column="reservation11" jdbcType="VARCHAR" property="reservation11" />
+    <result column="reservation12" jdbcType="VARCHAR" property="reservation12" />
+    <result column="reservation13" jdbcType="VARCHAR" property="reservation13" />
+    <result column="reservation14" jdbcType="VARCHAR" property="reservation14" />
+    <result column="reservation15" jdbcType="VARCHAR" property="reservation15" />
+    <result column="reservation16" jdbcType="VARCHAR" property="reservation16" />
+    <result column="reservation17" jdbcType="VARCHAR" property="reservation17" />
+    <result column="reservation18" jdbcType="VARCHAR" property="reservation18" />
+    <result column="reservation19" jdbcType="VARCHAR" property="reservation19" />
+    <result column="reservation20" jdbcType="VARCHAR" property="reservation20" />
+    <result column="reservation21" jdbcType="VARCHAR" property="reservation21" />
+    <result column="reservation22" jdbcType="VARCHAR" property="reservation22" />
+    <result column="reservation23" jdbcType="VARCHAR" property="reservation23" />
+    <result column="reservation24" jdbcType="VARCHAR" property="reservation24" />
+    <result column="reservation25" jdbcType="VARCHAR" property="reservation25" />
+    <result column="lastupdatedby" jdbcType="VARCHAR" property="lastupdatedby" />
+    <result column="lastupdatedtime" jdbcType="VARCHAR" property="lastupdatedtime" />
+    <result column="refreshtime" jdbcType="VARCHAR" property="refreshtime" />
+    <result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+    <result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+    <result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+    <result column="reserver1" jdbcType="VARCHAR" property="reserver1" />
+    <result column="reserver2" jdbcType="VARCHAR" property="reserver2" />
+    <result column="reserver3" jdbcType="VARCHAR" property="reserver3" />
+    <result column="reserver4" jdbcType="VARCHAR" property="reserver4" />
+    <result column="reserver5" jdbcType="VARCHAR" property="reserver5" />
+    <result column="reserver6" jdbcType="VARCHAR" property="reserver6" />
+    <result column="reserver7" jdbcType="VARCHAR" property="reserver7" />
+    <result column="reserver8" jdbcType="VARCHAR" property="reserver8" />
+    <result column="reserver9" jdbcType="VARCHAR" property="reserver9" />
+    <result column="reserver10" jdbcType="VARCHAR" property="reserver10" />
+    <result column="reserver11" jdbcType="VARCHAR" property="reserver11" />
+    <result column="reserver12" jdbcType="VARCHAR" property="reserver12" />
+    <result column="reserver13" jdbcType="VARCHAR" property="reserver13" />
+    <result column="reserver14" jdbcType="VARCHAR" property="reserver14" />
+    <result column="reserver15" jdbcType="VARCHAR" property="reserver15" />
+    <result column="reserver16" jdbcType="VARCHAR" property="reserver16" />
+    <result column="reserver17" jdbcType="VARCHAR" property="reserver17" />
+    <result column="reserver18" jdbcType="VARCHAR" property="reserver18" />
+    <result column="reserver19" jdbcType="VARCHAR" property="reserver19" />
+    <result column="reserver20" jdbcType="VARCHAR" property="reserver20" />
+    <result column="reserver21" jdbcType="VARCHAR" property="reserver21" />
+    <result column="reserver22" jdbcType="VARCHAR" property="reserver22" />
+    <result column="reserver23" jdbcType="VARCHAR" property="reserver23" />
+    <result column="reserver24" jdbcType="VARCHAR" property="reserver24" />
+    <result column="reserver25" jdbcType="VARCHAR" property="reserver25" />
+    <result column="reserver26" jdbcType="VARCHAR" property="reserver26" />
+    <result column="reserver27" jdbcType="VARCHAR" property="reserver27" />
+    <result column="reserver28" jdbcType="VARCHAR" property="reserver28" />
+    <result column="reserver29" jdbcType="VARCHAR" property="reserver29" />
+    <result column="reserver30" jdbcType="VARCHAR" property="reserver30" />
+    <result column="reserver31" jdbcType="VARCHAR" property="reserver31" />
+    <result column="reserver32" jdbcType="VARCHAR" property="reserver32" />
+    <result column="reserver33" jdbcType="VARCHAR" property="reserver33" />
+    <result column="reserver34" jdbcType="VARCHAR" property="reserver34" />
+    <result column="reserver35" jdbcType="VARCHAR" property="reserver35" />
+    <result column="reserver36" jdbcType="VARCHAR" property="reserver36" />
+    <result column="reserver37" jdbcType="VARCHAR" property="reserver37" />
+    <result column="reserver38" jdbcType="VARCHAR" property="reserver38" />
+    <result column="reserver39" jdbcType="VARCHAR" property="reserver39" />
+    <result column="reserver40" jdbcType="VARCHAR" property="reserver40" />
+    <result column="reserver41" jdbcType="VARCHAR" property="reserver41" />
+    <result column="reserver42" jdbcType="VARCHAR" property="reserver42" />
+    <result column="reserver43" jdbcType="VARCHAR" property="reserver43" />
+    <result column="reserver44" jdbcType="VARCHAR" property="reserver44" />
+    <result column="reserver45" jdbcType="VARCHAR" property="reserver45" />
+    <result column="reserver46" jdbcType="VARCHAR" property="reserver46" />
+    <result column="reserver47" jdbcType="VARCHAR" property="reserver47" />
+    <result column="reserver48" jdbcType="VARCHAR" property="reserver48" />
+    <result column="reserver49" jdbcType="VARCHAR" property="reserver49" />
+    <result column="reserver50" jdbcType="VARCHAR" property="reserver50" />
+    <result column="reserver51" jdbcType="VARCHAR" property="reserver51" />
+    <result column="reserver52" jdbcType="VARCHAR" property="reserver52" />
+    <result column="reserver53" jdbcType="VARCHAR" property="reserver53" />
+    <result column="reserver54" jdbcType="VARCHAR" property="reserver54" />
+    <result column="reserver55" jdbcType="VARCHAR" property="reserver55" />
+    <result column="reserver56" jdbcType="VARCHAR" property="reserver56" />
+    <result column="reserver57" jdbcType="VARCHAR" property="reserver57" />
+    <result column="reserver58" jdbcType="VARCHAR" property="reserver58" />
+    <result column="reserver59" jdbcType="VARCHAR" property="reserver59" />
+    <result column="reserver60" jdbcType="VARCHAR" property="reserver60" />
+    <result column="reserver61" jdbcType="VARCHAR" property="reserver61" />
+    <result column="reserver62" jdbcType="VARCHAR" property="reserver62" />
+    <result column="reserver63" jdbcType="VARCHAR" property="reserver63" />
+    <result column="reserver64" jdbcType="VARCHAR" property="reserver64" />
+    <result column="reserver65" jdbcType="VARCHAR" property="reserver65" />
+    <result column="reserver66" jdbcType="VARCHAR" property="reserver66" />
+    <result column="reserver67" jdbcType="VARCHAR" property="reserver67" />
+    <result column="reserver68" jdbcType="VARCHAR" property="reserver68" />
+    <result column="reserver69" jdbcType="VARCHAR" property="reserver69" />
+    <result column="reserver70" jdbcType="VARCHAR" property="reserver70" />
+    <result column="reserver71" jdbcType="VARCHAR" property="reserver71" />
+    <result column="reserver72" jdbcType="VARCHAR" property="reserver72" />
+    <result column="reserver73" jdbcType="VARCHAR" property="reserver73" />
+    <result column="reserver74" jdbcType="VARCHAR" property="reserver74" />
+    <result column="reserver75" jdbcType="VARCHAR" property="reserver75" />
+    <result column="reserver76" jdbcType="VARCHAR" property="reserver76" />
+    <result column="reserver77" jdbcType="VARCHAR" property="reserver77" />
+    <result column="reserver78" jdbcType="VARCHAR" property="reserver78" />
+    <result column="reserver79" jdbcType="VARCHAR" property="reserver79" />
+    <result column="reserver80" jdbcType="VARCHAR" property="reserver80" />
+    <result column="xdjyjg" jdbcType="VARCHAR" property="xdjyjg" />
+    <result column="sfjdxtxdry" jdbcType="VARCHAR" property="sfjdxtxdry" />
+    <result column="sfjdxtfdry" jdbcType="VARCHAR" property="sfjdxtfdry" />
+    <result column="sfda" jdbcType="VARCHAR" property="sfda" />
+    <result column="sfzsxd" jdbcType="VARCHAR" property="sfzsxd" />
+    <result column="dnabh" jdbcType="VARCHAR" property="dnabh" />
+    <result column="yxjyjg" jdbcType="VARCHAR" property="yxjyjg" />
+    <result column="reservation11_cn" jdbcType="VARCHAR" property="reservation11Cn" />
+    <result column="reservation15_cn" jdbcType="VARCHAR" property="reservation15Cn" />
+    <result column="reservation16_cn" jdbcType="VARCHAR" property="reservation16Cn" />
+    <result column="xzfs_cn" jdbcType="VARCHAR" property="xzfsCn" />
+    <result column="lrdw_cn" jdbcType="VARCHAR" property="lrdwCn" />
+    <result column="jiguan_cn" jdbcType="VARCHAR" property="jiguanCn" />
+    <result column="zy_cn" jdbcType="VARCHAR" property="zyCn" />
+    <result column="ryjs_cn" jdbcType="VARCHAR" property="ryjsCn" />
+    <result column="ab_cn" jdbcType="VARCHAR" property="abCn" />
+    <result column="rystate_cn" jdbcType="VARCHAR" property="rystateCn" />
+    <result column="swztqk_cn" jdbcType="VARCHAR" property="swztqkCn" />
+    <result column="zzdxzqh_cn" jdbcType="VARCHAR" property="zzdxzqhCn" />
+    <result column="ywgxbm_cn" jdbcType="VARCHAR" property="ywgxbmCn" />
+    <result column="xb_cn" jdbcType="VARCHAR" property="xbCn" />
+    <result column="gj_cn" jdbcType="VARCHAR" property="gjCn" />
+    <result column="mz_cn" jdbcType="VARCHAR" property="mzCn" />
+    <result column="rywhcd_cn" jdbcType="VARCHAR" property="rywhcdCn" />
+    <result column="xzqh_cn" jdbcType="VARCHAR" property="xzqhCn" />
+    <result column="zhch_cn" jdbcType="VARCHAR" property="zhchCn" />
+    <result column="ky_cn" jdbcType="VARCHAR" property="kyCn" />
+    <result column="sf_cn" jdbcType="VARCHAR" property="sfCn" />
+    <result column="sfxd_cn" jdbcType="VARCHAR" property="sfxdCn" />
+    <result column="ljd_cn" jdbcType="VARCHAR" property="ljdCn" />
+    <result column="jzyy_cn" jdbcType="VARCHAR" property="jzyyCn" />
+    <result column="lx_cn" jdbcType="VARCHAR" property="lxCn" />
+    <result column="tx_cn" jdbcType="VARCHAR" property="txCn" />
+    <result column="xx_cn" jdbcType="VARCHAR" property="xxCn" />
+    <result column="tmtz_cn" jdbcType="VARCHAR" property="tmtzCn" />
+    <result column="zagj_cn" jdbcType="VARCHAR" property="zagjCn" />
+    <result column="sdtd_cn" jdbcType="VARCHAR" property="sdtdCn" />
+    <result column="xzsj_cn" jdbcType="VARCHAR" property="xzsjCn" />
+    <result column="xzcs_cn" jdbcType="VARCHAR" property="xzcsCn" />
+    <result column="xzdx_cn" jdbcType="VARCHAR" property="xzdxCn" />
+    <result column="lrr_cn" jdbcType="VARCHAR" property="lrrCn" />
+    <result column="departmentcode_cn" jdbcType="VARCHAR" property="departmentcodeCn" />
+    <result column="creator_cn" jdbcType="VARCHAR" property="creatorCn" />
+    <result column="lastupdatedby_cn" jdbcType="VARCHAR" property="lastupdatedbyCn" />
+    <result column="datastate" jdbcType="VARCHAR" property="datastate" />
+    <result column="datacheck" jdbcType="VARCHAR" property="datacheck" />
+    <result column="queryid" jdbcType="VARCHAR" property="queryid" />
+    <result column="reservation26" jdbcType="VARCHAR" property="reservation26" />
+    <result column="reservation27" jdbcType="VARCHAR" property="reservation27" />
+    <result column="reservation28" jdbcType="VARCHAR" property="reservation28" />
+    <result column="reservation29" jdbcType="VARCHAR" property="reservation29" />
+    <result column="reservation30" jdbcType="VARCHAR" property="reservation30" />
+    <result column="reservation31" jdbcType="VARCHAR" property="reservation31" />
+    <result column="reservation32" jdbcType="VARCHAR" property="reservation32" />
+    <result column="reservation33" jdbcType="VARCHAR" property="reservation33" />
+    <result column="reservation34" jdbcType="VARCHAR" property="reservation34" />
+    <result column="reservation35" jdbcType="VARCHAR" property="reservation35" />
+    <result column="reservation36" jdbcType="VARCHAR" property="reservation36" />
+    <result column="reservation37" jdbcType="VARCHAR" property="reservation37" />
+    <result column="reservation38" jdbcType="VARCHAR" property="reservation38" />
+    <result column="reservation39" jdbcType="VARCHAR" property="reservation39" />
+    <result column="reservation40" jdbcType="VARCHAR" property="reservation40" />
+    <result column="reservation41" jdbcType="VARCHAR" property="reservation41" />
+    <result column="reservation42" jdbcType="VARCHAR" property="reservation42" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, rybh, zzdxzqh, ywgxbm, xrzwbh, zwbh, xm, ywx, ywm, bm, byname, csrq, birthdayinend, 
+    xb, gj, zjzl, zjhm, mz, rywhcd, hjdz, xzqh, zhch, xxdzms, gzdw, ky, lxdh, qtzjlx1, 
+    qtzjhm1, qtzjlx2, qtzjhm2, qtzjlx3, qtzjhm3, sf, sfxd, ljd, jzyy, sg, lx, tx, xx, 
+    tmtz, zagj, sdtd, xzsj, xzcs, xzdx, rylx, rystate, sazz, ssje, qfqk, swqk, zcf, wfjl, 
+    lrdw, lrsj, lrr, tlsy, lhyy, qzzlqz, qzhm, qzqfd, lxrxm, lxrdh, jdrmc, sfzy, jiguan, 
+    zy, ryjs, ab, wfqk, swztqk, cs, cszxrq, xzfs, bz, departmentcode, creator, createdtime, 
+    securitygrade, reservation01, reservation02, reservation03, reservation04, reservation05, 
+    reservation06, reservation07, reservation08, reservation09, reservation10, reservation11, 
+    reservation12, reservation13, reservation14, reservation15, reservation16, reservation17, 
+    reservation18, reservation19, reservation20, reservation21, reservation22, reservation23, 
+    reservation24, reservation25, lastupdatedby, lastupdatedtime, refreshtime, uploadflag, 
+    downloadflag, deleteflag, reserver1, reserver2, reserver3, reserver4, reserver5, 
+    reserver6, reserver7, reserver8, reserver9, reserver10, reserver11, reserver12, reserver13, 
+    reserver14, reserver15, reserver16, reserver17, reserver18, reserver19, reserver20, 
+    reserver21, reserver22, reserver23, reserver24, reserver25, reserver26, reserver27, 
+    reserver28, reserver29, reserver30, reserver31, reserver32, reserver33, reserver34, 
+    reserver35, reserver36, reserver37, reserver38, reserver39, reserver40, reserver41, 
+    reserver42, reserver43, reserver44, reserver45, reserver46, reserver47, reserver48, 
+    reserver49, reserver50, reserver51, reserver52, reserver53, reserver54, reserver55, 
+    reserver56, reserver57, reserver58, reserver59, reserver60, reserver61, reserver62, 
+    reserver63, reserver64, reserver65, reserver66, reserver67, reserver68, reserver69, 
+    reserver70, reserver71, reserver72, reserver73, reserver74, reserver75, reserver76, 
+    reserver77, reserver78, reserver79, reserver80, xdjyjg, sfjdxtxdry, sfjdxtfdry, sfda, 
+    sfzsxd, dnabh, yxjyjg, reservation11_cn, reservation15_cn, reservation16_cn, xzfs_cn, 
+    lrdw_cn, jiguan_cn, zy_cn, ryjs_cn, ab_cn, rystate_cn, swztqk_cn, zzdxzqh_cn, ywgxbm_cn, 
+    xb_cn, gj_cn, mz_cn, rywhcd_cn, xzqh_cn, zhch_cn, ky_cn, sf_cn, sfxd_cn, ljd_cn, 
+    jzyy_cn, lx_cn, tx_cn, xx_cn, tmtz_cn, zagj_cn, sdtd_cn, xzsj_cn, xzcs_cn, xzdx_cn, 
+    lrr_cn, departmentcode_cn, creator_cn, lastupdatedby_cn, datastate, datacheck, queryid, 
+    reservation26, reservation27, reservation28, reservation29, reservation30, reservation31, 
+    reservation32, reservation33, reservation34, reservation35, reservation36, reservation37, 
+    reservation38, reservation39, reservation40, reservation41, reservation42
+  </sql>
+
+  <select id="listCasesSuspectByAjbh" resultMap="BaseResultMap">
+      select id, ajbh, xm, xb, zjhm, hjdz, xxdzms, lxdh from t_asj_xyrdj where ajbh in
+      <foreach collection="list" item="ajbh" open="(" separator="," close=")">
+        #{ajbh}
+      </foreach>
+       group by zjhm
+  </select>
+
+</mapper>

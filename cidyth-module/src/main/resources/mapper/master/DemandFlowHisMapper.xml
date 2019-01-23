@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.demand.dao.DemandFlowHisMapper">
+	<resultMap id="BaseResultMap"
+		type="com.hyzs.cidyth.module.demand.entity.DemandFlowHis">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="xqid" jdbcType="INTEGER" property="xqid" />
+		<result column="zprybh" jdbcType="VARCHAR" property="zprybh" />
+		<result column="zprymc" jdbcType="VARCHAR" property="zprymc" />
+		<result column="zpryjgbh" jdbcType="VARCHAR" property="zpryjgbh" />
+		<result column="zpryjgmc" jdbcType="VARCHAR" property="zpryjgmc" />
+		<result column="jsrybh" jdbcType="VARCHAR" property="jsrybh" />
+		<result column="jsrymc" jdbcType="VARCHAR" property="jsrymc" />
+		<result column="jsryjgbh" jdbcType="VARCHAR" property="jsryjgbh" />
+		<result column="jsryjgmc" jdbcType="VARCHAR" property="jsryjgmc" />
+		<result column="qszt" jdbcType="VARCHAR" property="qszt" />
+		<result column="qsztms" jdbcType="VARCHAR" property="qsztms" />
+		<result column="qssj" jdbcType="TIMESTAMP" property="qssj" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<result column="qssjjz" jdbcType="TIMESTAMP" property="qssjjz" />
+		<result column="qsbz" jdbcType="INTEGER" property="qsbz" />
+		<result column="qscs" jdbcType="INTEGER" property="qscs" />
+		<result column="fktsjz" jdbcType="INTEGER" property="fktsjz" />
+		<result column="fksjjz" jdbcType="TIMESTAMP" property="fksjjz" />
+		<result column="fkcs" jdbcType="INTEGER" property="fkcs" />
+		<result column="fksqyq" jdbcType="INTEGER" property="fksqyq" />
+		<result column="fksqyy" jdbcType="VARCHAR" property="fksqyy" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, xqid, zprybh, zpryjgbh, zpryjgmc, jsrybh, jsryjgbh, jsryjgmc,
+		qszt, qsztms, qssj, lrsj, qssjjz, qsbz, qscs, fktsjz, fksjjz, fkcs, fksqyq, fksqyy
+	</sql>
+	<update id="updateQszt">
+		update t_demand_flow_his set qszt = #{qszt}, qssj = now() where xqid = #{xqid} and jsrybh = #{jsrybh}
+	</update>
+	<select id="listMyAllocatedFlow" resultMap="BaseResultMap">
+		select
+			qszt,
+			group_concat(jsrymc separator '、') as jsrymc
+		from t_demand_flow_his
+		where xqid = #{xqid} and FIND_IN_SET(zprybh, (select zpld from t_demand where id = #{xqid}))
+		group by qszt
+	</select>
+	<select id="selectByStatus$xqid" resultMap="BaseResultMap">
+		SELECT GROUP_CONCAT(DISTINCT jsrymc)jsrymc,qszt
+		FROM t_demand_flow_his
+		WHERE xqid = #{xqid}
+		AND qszt IN
+		<trim prefix="(" suffix=")">
+			<foreach collection="statusList" item="status">
+				#{status}
+			</foreach>
+		</trim>
+	</select>
+
+
+	<select id="overdueFeedback" resultType="Map">
+		<bind name="RETREAT" value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@RETREAT.name()" />
+		<![CDATA[
+			SELECT
+				prefix_code,
+				count(prefix_code) value
+			FROM
+				(
+					SELECT
+						SUBSTR(jsryjgbh, 1, 6) prefix_code
+					FROM
+						t_demand_flow_his
+					WHERE
+						qszt != #{RETREAT}
+					AND (qssj is null and now() > fksjjz) or (qssj is not null and qssj > fksjjz)
+				) t
+			GROUP BY
+				t.prefix_code
+		]]>
+	</select>
+
+	<select id="overdueFeedbackDetail" resultType="Map">
+		SELECT
+			demand.id,
+			demand.xqmc,
+			demand.qqdw,
+			demand.lrrymc,
+			demand.qqsj,
+			demand.jsdw,
+			his.jsrymc
+		FROM
+			t_demand_flow_his his
+			left join t_demand demand on demand.id = his.xqid
+		WHERE
+			his.jsryjgbh like concat(#{prefixCode}, '%')
+		AND
+			(his.qssj IS NULL AND now() > his.fksjjz)
+		OR (
+			his.qssj IS NOT NULL
+			AND his.qssj > his.fksjjz
+		)
+	</select>
+
+	<select id="waitHandlerDetail" resultType="Map">
+		SELECT
+			demand.id,
+			demand.xqmc,
+			demand.qqdw,
+			demand.lrrymc,
+			demand.qqsj,
+			demand.jsdw,
+			his.jsrymc
+		FROM
+			t_demand_flow_his his
+			left join t_demand demand on demand.id = his.xqid
+		where demand.id is not null and his.qszt = #{qszt} and his.jsrybh = #{account}
+	</select>
+
+</mapper>

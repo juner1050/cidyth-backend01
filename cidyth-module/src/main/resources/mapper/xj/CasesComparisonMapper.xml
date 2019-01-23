@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesComparisonCidMapper">
+
+	<select id="listCasesComparisonByAjbh" resultType="com.hyzs.cidyth.module.base.entity.CasesComparison">
+		select
+			dybz.create_date as bzsj,
+			xxbz.source as bzly,
+			jzaj.jqbh as jqbh,
+			cases.case_n as ajbh,
+			cases.kno as kybh,
+			dybz.xchjbh1 as wzbh,
+			dybz.rybh as rybh,
+			dybz.rywzbh as bzlybh,
+			dybz.xm as xm,
+			dybz.sfzh as zjhm,
+			person.csrq as csrq,
+			person.hjd as hjd
+		from yppt.v_cba_case_4403 cases
+			inner join yppt.v_jzaj jzaj on jzaj.ajbh = cases.CASE_N
+			inner join yppt.v_hjwz_dybz_4403 dybz on dybz.ajbh1 = cases.CASE_N
+			inner join yppt.v_cba_xxbz_4403 xxbz on xxbz.CASE_N = cases.CASE_N and xxbz.RYBH = dybz.rybh and xxbz.RY_NO = dybz.rywzbh
+			inner join yppt.v_cba_person_4403 person on person.CASE_N = cases.CASE_N and person.RYBH = dybz.rybh
+		WHERE cases.CASE_N = #{ajbh}
+	</select>
+
+</mapper>

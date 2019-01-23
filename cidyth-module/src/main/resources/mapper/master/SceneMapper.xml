@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.SceneMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.Scene">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="ID" />
+	<result column="AJBH" jdbcType="VARCHAR" property="ajbh" />
+	<result column="XXID" jdbcType="VARCHAR" property="xxid" />
+	<result column="XCBH" jdbcType="VARCHAR" property="xcbh" />
+	<result column="JCJID" jdbcType="VARCHAR" property="jcjid" />
+	<result column="XCFKH" jdbcType="VARCHAR" property="xcfkh" />
+	<result column="KYSJKS" jdbcType="TIMESTAMP" property="kysjks" />
+	<result column="KYSJJS" jdbcType="TIMESTAMP" property="kysjjs" />
+	<result column="KYDD" jdbcType="VARCHAR" property="kydd" />
+	<result column="BHRXM" jdbcType="VARCHAR" property="bhrxm" />
+	<result column="BHDW" jdbcType="VARCHAR" property="bhdw" />
+	<result column="BHRZW" jdbcType="VARCHAR" property="bhrzw" />
+	<result column="BHCS" jdbcType="VARCHAR" property="bhcs" />
+	<result column="BHSJ" jdbcType="TIMESTAMP" property="bhsj" />
+	<result column="XCWPFD" jdbcType="VARCHAR" property="xcwpfd" />
+	<result column="XCTJ" jdbcType="VARCHAR" property="xctj" />
+	<result column="TQQK" jdbcType="VARCHAR" property="tqqk" />
+	<result column="TQQKQT" jdbcType="VARCHAR" property="tqqkqt" />
+	<result column="SD" jdbcType="FLOAT" property="sd" />
+	<result column="XDSD" jdbcType="FLOAT" property="xdsd" />
+	<result column="FX" jdbcType="VARCHAR" property="fx" />
+	<result column="GZTJ" jdbcType="VARCHAR" property="gztj" />
+	<result column="XCZHRY" jdbcType="VARCHAR" property="xczhry" />
+	<result column="KYJCRY" jdbcType="VARCHAR" property="kyjcry" />
+	<result column="QTDDXCRY" jdbcType="VARCHAR" property="qtddxcry" />
+	<result column="XCYLW" jdbcType="VARCHAR" property="xcylw" />
+	<result column="XCCZYJXZ" jdbcType="VARCHAR" property="xcczyjxz" />
+	<result column="XCCZYJWZ" jdbcType="VARCHAR" property="xcczyjwz" />
+	<result column="KYJCQK" jdbcType="VARCHAR" property="kyjcqk" />
+	<result column="LX" jdbcType="INTEGER" property="lx" />
+	<result column="LY" jdbcType="INTEGER" property="ly" />
+	<result column="SWQKS" jdbcType="INTEGER" property="swqks" />
+	<result column="SWQKW" jdbcType="INTEGER" property="swqkw" />
+	<result column="SSWPZJZ" jdbcType="INTEGER" property="sswpzjz" />
+	<result column="JZRBZ" jdbcType="VARCHAR" property="jzrbz" />
+	<result column="BCBZ" jdbcType="VARCHAR" property="bcbz" />
+	<result column="WCBZ" jdbcType="VARCHAR" property="wcbz" />
+	<result column="HGBZ" jdbcType="VARCHAR" property="hgbz" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    ID,AJBH,XXID,XCBH,JCJID,XCFKH,KYSJKS,KYSJJS,KYDD,BHRXM,BHDW,BHRZW,BHCS,BHSJ,XCWPFD,XCTJ,TQQK,TQQKQT,SD,XDSD,FX,GZTJ,XCZHRY,KYJCRY,QTDDXCRY,XCYLW,XCCZYJXZ,XCCZYJWZ,KYJCQK,LX,LY,SWQKS,SWQKW,SSWPZJZ,JZRBZ,BCBZ,WCBZ,HGBZ
+  </sql>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.reply.dao.ReplyMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.reply.entity.Reply">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="reference_id" jdbcType="VARCHAR" property="referenceId" />
+		<result column="xxlx" jdbcType="VARCHAR" property="xxlx" />
+		<result column="lxbh" jdbcType="VARCHAR" property="lxbh" />
+		<result column="fsry" jdbcType="VARCHAR" property="fsry" />
+		<result column="fsryxm" jdbcType="VARCHAR" property="fsryxm" />
+		<result column="fsdw" jdbcType="VARCHAR" property="fsdw" />
+		<result column="fsdwmc" jdbcType="VARCHAR" property="fsdwmc" />
+		<result column="fsrq" jdbcType="TIMESTAMP" property="fsrq" />
+		<result column="fsnr" jdbcType="VARCHAR" property="fsnr" />
+		<result column="hfry" jdbcType="VARCHAR" property="hfry" />
+		<result column="hfryxm" jdbcType="VARCHAR" property="hfryxm" />
+		<result column="hfdw" jdbcType="VARCHAR" property="hfdw" />
+		<result column="hfdwmc" jdbcType="VARCHAR" property="hfdwmc" />
+		<result column="sffj" jdbcType="VARCHAR" property="sffj" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="xgry" jdbcType="VARCHAR" property="xgry" />
+		<result column="xgryxm" jdbcType="VARCHAR" property="xgryxm" />
+		<result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, reference_id, xxlx, lxbh, fsry, fsryxm, fsdw, fsdwmc, fsrq, fsnr,
+		hfry, hfryxm, hfdw,
+		hfdwmc, sffj, smbz, xgry, xgryxm,xgsj
+	</sql>
+	<select id="selectByReferenceId$ReplyTypes" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_reply
+		where 1=1
+		<if test="referenceIdList != null and referenceIdList.size()>0">
+			and
+			<trim prefix="(" prefixOverrides="or" suffix=")">
+				<foreach collection="referenceIdList" item="referenceId">
+					or reference_id
+					in (#{referenceId,jdbcType=VARCHAR})
+				</foreach>
+			</trim>
+		</if>
+		<if test="replyTypes != null and replyTypes.size()>0">
+			and xxlx in
+			<foreach collection="replyTypes" item="replyType" open="("
+				separator="," close=")">
+				#{replyType,jdbcType=VARCHAR}
+			</foreach>
+		</if>
+		order by fsrq asc
+	</select>
+</mapper>

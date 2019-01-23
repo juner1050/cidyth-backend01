@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.analysis.dao.AnalysisClueMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.analysis.entity.AnalysisClue">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ab" jdbcType="VARCHAR" property="ab" />
+    <result column="xsbh" jdbcType="VARCHAR" property="xsbh" />
+    <result column="xsmc" jdbcType="VARCHAR" property="xsmc" />
+    <result column="smbz" jdbcType="VARCHAR" property="smbz" />
+    <result column="gzyj" jdbcType="VARCHAR" property="gzyj" />
+    <result column="jsdwbh" jdbcType="VARCHAR" property="jsdwbh" />
+    <result column="jsdwmc" jdbcType="VARCHAR" property="jsdwmc" />
+    <result column="blzt" jdbcType="VARCHAR" property="blzt" />
+    <result column="fsdwbh" jdbcType="VARCHAR" property="fsdwbh" />
+    <result column="fsdwmc" jdbcType="VARCHAR" property="fsdwmc" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="ypsj" jdbcType="DATE" property="ypsj" />
+    <result column="lrsj" jdbcType="DATE" property="lrsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, ab, xsbh, xsmc, smbz, gzyj, jsdwbh, jsdwmc, blzt, fsdwbh, fsdwmc, lrry, lrrymc, lrsj, ypsj
+  </sql>
+
+  <select id="list" resultMap="BaseResultMap">
+    <bind name="NO" value="@com.hyzs.cidyth.common.enums.YesNoEnum@NO.name()" />
+    select * from t_analysis_clue
+    <where>
+      xsbh in (
+      select xsbh from t_analysis_clue where lrry = #{lrry} UNION
+      select xsbh from t_analysis_node where jsrybh = #{lrry}
+      )
+      <if test="xsmc != null and !xsmc.equals('')">and xsmc like concat('%', #{xsmc},'%')</if>
+      <if test="lrrymc != null and !lrrymc.equals('')">and lrrymc like concat('%', #{lrrymc},'%')</if>
+      <if test="blzt != null and !blzt.equals('')">and blzt = #{blzt}</if>
+      <if test="fssjks != null and !fssjks.equals('') and fssjjs != null and !fssjjs.equals('')">
+        <![CDATA[
+            and lrsj >= STR_TO_DATE(#{fssjks},'%Y-%m-%d %H:%i:%s')
+            and lrsj <= STR_TO_DATE(#{fssjjs},'%Y-%m-%d %H:%i:%s')
+        ]]>
+      </if>
+    </where>
+  </select>
+
+</mapper>

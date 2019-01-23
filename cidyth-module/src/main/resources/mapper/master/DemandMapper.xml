@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.demand.dao.DemandMapper">
+	<resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.demand.entity.Demand">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="xqmc" jdbcType="VARCHAR" property="xqmc" />
+		<result column="xqlx" jdbcType="VARCHAR" property="xqlx" />
+		<result column="xqnr" jdbcType="VARCHAR" property="xqnr" />
+		<result column="qqry" jdbcType="VARCHAR" property="qqry" />
+		<result column="qqdwbh" jdbcType="VARCHAR" property="qqdwbh" />
+		<result column="qqdw" jdbcType="VARCHAR" property="qqdw" />
+		<result column="qqsj" jdbcType="TIMESTAMP" property="qqsj" />
+		<result column="jsdw" jdbcType="VARCHAR" property="jsdw" />
+		<result column="jsdwbh" jdbcType="VARCHAR" property="jsdwbh" />
+		<result column="zpld" jdbcType="VARCHAR" property="zpld" />
+		<result column="zpsj" jdbcType="TIMESTAMP" property="zpsj" />
+		<result column="fksj" jdbcType="INTEGER" property="fksj" />
+		<result column="fkts" jdbcType="INTEGER" property="fkts" />
+		<result column="rwjsry" jdbcType="VARCHAR" property="rwjsry" />
+		<result column="rwqsry" jdbcType="VARCHAR" property="rwqsry" />
+		<result column="qssj" jdbcType="TIMESTAMP" property="qssj" />
+		<result column="cbzt" jdbcType="INTEGER" property="cbzt" />
+		<result column="qszt" jdbcType="VARCHAR" property="qszt" />
+		<result column="sffj" jdbcType="INTEGER" property="sffj" />
+		<result column="jjcd" jdbcType="INTEGER" property="jjcd" />
+		<result column="smbz" jdbcType="VARCHAR" property="smbz" />
+		<result column="lrry" jdbcType="INTEGER" property="lrry" />
+		<result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<result column="xgry" jdbcType="INTEGER" property="xgry" />
+		<result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+		<result column="mind_top" jdbcType="VARCHAR" property="mindTop" />
+		<result column="mind_left" jdbcType="VARCHAR" property="mindLeft" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		<!-- WARNING - @mbg.generated -->
+		id, ajbh, xqmc, xqlx, xqnr, qqry, qqdwbh,qqdw, qqsj, jsdw, jsdwbh,
+		zpld, zpsj, fksj, fkts
+		rwjsry, rwqsry, qssj,
+		cbzt, qszt, sffj, smbz, lrry,
+		lrrymc,lrsj, xgry, xgsj, mind_top, mind_left
+	</sql>
+
+	<select id="selectBySelective" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		 DISTINCT dem.*
+		from t_demand_flow_his dh right join t_demand dem
+		on dh.xqid = dem.id
+		<trim prefix="where" prefixOverrides="and">
+			<if test="caseNoList != null and caseNoList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="caseNoList" item="caseNo">
+						or dem.ajbh in
+						(#{caseNo,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+			<if test="demandCreateUserId != null and !demandCreateUserId.equals('')">
+				and dem.lrry = #{demandCreateUserId}
+			</if>
+			<if test="acceptDeptIdList != null and acceptDeptIdList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="acceptDeptIdList" item="deptId">
+						or dh.jsryjgbh
+						in (#{deptId,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+			<if test="acceptUserIdList != null and acceptUserIdList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="acceptUserIdList" item="userId">
+						or dh.jsrybh in
+						(#{userId,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+		</trim>
+	</select>
+
+	<select id="selectDailyDemandByCaseAndAccptDept" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		<bind name="WAIT_FOR_SIGN"
+			value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@WAIT_FOR_SIGN.name()" />
+		<bind name="SIGNED"
+			value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@SIGNED.name()" />
+		<bind name="FEEDBACKED" value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@FEEDBACKED.name()"/>
+		select
+			distinct dem.*
+		from t_demand_flow_his dh inner join t_demand dem
+		on dh.xqid = dem.id
+		<trim prefix="where" prefixOverrides="and">
+			<![CDATA[
+				and (dem.lrsj >= STR_TO_DATE(DATE_FORMAT(NOW(),'%Y-%m-%d'),'%Y-%m-%d %H:%i:%s') and 
+					dem.lrsj <= DATE_ADD(DATE_ADD(STR_TO_DATE(DATE_FORMAT(NOW(),'%Y-%m-%d'),'%Y-%m-%d %H:%i:%s'),INTERVAL 1 DAY),INTERVAL -1 SECOND)
+					)
+	  		]]>
+			<if test="caseNoList != null and caseNoList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="caseNoList" item="caseNo">
+						or dem.ajbh in
+						(#{caseNo,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+			<if test="acceptDeptIdList != null and acceptDeptIdList.size()>0">
+				and
+				<trim prefix="(" prefixOverrides="or" suffix=")">
+					<foreach collection="acceptDeptIdList" item="deptId">
+						or dh.jsryjgbh
+						in (#{deptId,jdbcType=VARCHAR})
+					</foreach>
+				</trim>
+			</if>
+			<if test="status != null and !status.equals('')">
+				and dh.qszt = #{status}
+			</if>
+		</trim>
+	</select>
+
+	<select id="selectMonthlyDemandOfDept" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select MONTH(a.lrsj) ajbh,a.id,a.jsryjgbh,a.jsryjgmc
+		from
+		(select DISTINCT dem.lrsj,dem.id,dh.jsryjgbh,dh.jsryjgmc
+			from
+			t_demand_flow_his dh inner join t_demand dem
+			on dh.xqid = dem.id
+			<trim prefix="where" prefixOverrides="and">
+				<if test="year != null">
+					and YEAR(dem.lrsj) = #{year}
+				</if>
+				<if test="monthList != null and monthList.size()>0">
+					and MONTH(dem.lrsj) in
+					<foreach collection="monthList" item="month" open="("
+						separator="," close=")">
+						#{month}
+					</foreach>
+				</if>
+				<if test="deptIdList != null and deptIdList.size()>0">
+					and
+					<trim prefix="(" prefixOverrides="or" suffix=")">
+						<foreach collection="deptIdList" item="deptId">
+							or dh.jsryjgbh in
+							(#{deptId,jdbcType=VARCHAR})
+						</foreach>
+					</trim>
+				</if>
+			</trim>) a
+		order by ajbh
+	</select>
+
+	<!-- 代办事项ResultMap -->
+	<resultMap id="BacklogResultMap"
+		type="com.hyzs.cidyth.module.dashboard.entity.Backlog">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+		<result column="xqmc" jdbcType="VARCHAR" property="xqmc" />
+		<result column="xqnr" jdbcType="VARCHAR" property="xqnr" />
+		<!-- 发起人单位编号 -->
+		<result column="qqdwbh" jdbcType="VARCHAR" property="qqdwbh" />
+		<result column="qqdw" jdbcType="VARCHAR" property="qqdw" />
+		<!-- 发起人警号 -->
+		<result column="lrry" jdbcType="INTEGER" property="lrry" />
+		<result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+		<result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+		<!-- 指派人机构警号 -->
+		<result column="zpryjgbh" jdbcType="VARCHAR" property="zpryjgbh" />
+		<result column="zpryjgmc" jdbcType="VARCHAR" property="zpryjgmc" />
+		<!-- 指派人员警号 -->
+		<result column="zprybh" jdbcType="VARCHAR" property="zprybh" />
+		<result column="zprymc" jdbcType="VARCHAR" property="zprymc" />
+		<!-- 接受人员机构编号 -->
+		<result column="jsryjgbh" jdbcType="VARCHAR" property="jsryjgbh" />
+		<result column="jsryjgmc" jdbcType="VARCHAR" property="jsryjgmc" />
+		<!-- 接受人警号 -->
+		<result column="jsrybh" jdbcType="VARCHAR" property="jsrybh" />
+		<result column="jsrymc" jdbcType="VARCHAR" property="jsrymc" />
+		<!-- 当前步骤操作状态 -->
+		<result column="qszt" jdbcType="VARCHAR" property="qszt" />
+		<!-- 超时毫秒数 -->
+		<result column="milliseconedOfTimeout" jdbcType="BIGINT"
+			property="milliseconedOfTimeout" />
+	</resultMap>
+
+	<select id="selectAllDemandWillBeDone" resultMap="BacklogResultMap"
+		parameterType="java.util.Map">
+		<bind name="INIT"
+			value="@com.hyzs.cidyth.common.enums.DemandStatus@INIT.name()" />
+		<bind name="WAIT_FOR_SIGN"
+			value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@WAIT_FOR_SIGN.name()" />
+		<bind name="SIGNED"
+			value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@SIGNED.name()" />
+		
+		<bind name="FEEDBACK_CLUE"
+			value="@com.hyzs.cidyth.common.enums.ClueTypeEnum@RETURN.code()"/>
+
+		<trim prefix="SELECT * FROM(" prefixOverrides="UNION" suffix=")al">
+			<if test="accptDeptId != null and !accptDeptId.equals('')">
+				<!-- 需求已经产生但是到目前为止还没有指派 出去 -->
+				UNION
+				SELECT
+					dem.id,dem.ajbh,dem.xqmc,dem.xqnr,dem.qqdwbh,dem.qqdw,dem.lrry,dem.lrrymc,dem.lrsj,
+					dh.zpryjgbh,dh.zpryjgmc,dh.zprybh,dh.zprymc,dh.jsryjgbh,dh.jsryjgmc,dh.jsrybh,dh.jsrymc,
+					IFNULL(dh.qszt,dem.qszt)AS qszt,
+					(TIMESTAMPDIFF(SECOND,NOW(),dem.lrsj)*1000) AS milliseconedOfTimeout
+				FROM t_demand dem LEFT JOIN t_demand_flow_his dh
+				ON dem.id = dh.xqid
+				WHERE dem.qszt = #{INIT}
+				AND dem.jsdwbh = #{accptDeptId}
+				AND dh.xqid IS NULL
+				<![CDATA[AND DATE_SUB(dem.lrsj,INTERVAL #{days} DAY)> NOW()]]>
+			</if>
+			<if test="accptUserId != null and !accptUserId.equals('')">
+				<!-- 需求已经被指派到个人，但是还没被签收(等待签收状态) -->
+			  UNION
+			  SELECT 
+				  	dem.id,dem.ajbh,dem.xqmc,dem.xqnr,dem.qqdwbh,dem.qqdw,dem.lrry,dem.lrrymc,dem.lrsj,
+					dh.zpryjgbh,dh.zpryjgmc,dh.zprybh,dh.zprymc,dh.jsryjgbh,dh.jsryjgmc,dh.jsrybh,dh.jsrymc,
+					dh.qszt,
+					(TIMESTAMPDIFF(SECOND,NOW(),dh.qssj)*1000) AS milliseconedOfTimeout
+			  FROM t_demand dem INNER JOIN t_demand_flow_his dh
+			  ON dem.id = dh.xqid
+			  WHERE dh.qszt = #{WAIT_FOR_SIGN}
+			  AND dh.jsrybh = #{accptUserId}
+			  <![CDATA[AND DATE_SUB(dh.qssj,INTERVAL #{days} DAY) > NOW()]]>
+			  	<!-- 需求已经被个人签收(已签收),但没有反馈 -->
+		    	UNION
+				  	SELECT dem.id,dem.ajbh,dem.xqmc,dem.xqnr,dem.qqdwbh,dem.qqdw,dem.lrry,dem.lrrymc,dem.lrsj,
+					dh.zpryjgbh,dh.zpryjgmc,dh.zprybh,dh.zprymc,dh.jsryjgbh,dh.jsryjgmc,dh.jsrybh,dh.jsrymc,
+					dh.qszt,
+					(TIMESTAMPDIFF(SECOND,NOW(),dh.qssj)*1000) AS milliseconedOfTimeout
+			  	FROM t_demand dem INNER JOIN t_demand_flow_his dh
+			  	ON dem.id = dh.xqid
+			  	WHERE dh.qszt = #{SIGNED} 
+			  	AND dh.jsrybh = #{accptUserId}
+			  	<![CDATA[AND DATE_SUB(dh.qssj,INTERVAL #{days} DAY) > NOW()]]>
+			  	AND NOT EXISTS (
+					SELECT DISTINCT dclue.demand_id
+					FROM t_demand_clue dclue INNER JOIN t_clue clue
+					ON dclue.clue_id = clue.id
+					WHERE dclue.clue_type = #{FEEDBACK_CLUE}
+					AND dclue.demand_id = dem.id
+				 )
+			</if>
+		</trim>
+	</select>
+	
+	<select id="selectByPage" resultMap="BaseResultMap">
+		select
+			demand.id,
+			demand.ajbh,
+			demand.xqmc,
+			demand.xqlx,
+			demand.xqnr,
+			demand.smbz,
+			demand.fkts,
+			demand.qqdw,
+			demand.lrrymc,
+			demand.qqsj,
+			demand.zpld,
+			demand.lrry,
+			IFNULL(his.qszt, demand.qszt) as qszt
+		from t_demand demand
+		left join t_demand_flow_his his on his.xqid = demand.id and his.jsrybh = #{lrry}
+		<where>
+			demand.id in (
+				select id from t_demand where FIND_IN_SET(#{lrry},zpld) union
+				select xqid from t_demand_flow_his where jsrybh = #{lrry}
+			)
+			<if test="beginCreateTime != null and !beginCreateTime.equals('') and endCreateTime != null and !endCreateTime.equals('')">
+				<![CDATA[
+					and demand.qqsj >= STR_TO_DATE(#{beginCreateTime},'%Y-%m-%d %H:%i:%s')
+					and demand.qqsj <= STR_TO_DATE(#{endCreateTime},'%Y-%m-%d %H:%i:%s')
+	  			]]>
+			</if>
+			<if test="qszt != null and !qszt.equals('')">
+				and demand.qszt = #{qszt}
+			</if>
+			<if test="xqmc != null and !xqmc.equals('')">
+				and demand.xqmc like concat('%', #{xqmc} ,'%')
+			</if>
+			<if test="qqry != null and !qqry.equals('')">
+				and demand.qqry like concat('%', #{qqry} ,'%')
+			</if>
+			<if test="qqdw != null and !qqdw.equals('')">
+				and demand.qqdw like concat('%', #{qqdw} ,'%')
+			</if>
+		</where>
+	</select>
+	
+	<update id="updateQszt">
+		update t_demand set qszt = #{qszt} where id = #{id}
+	</update>
+	
+	<select id="listPersonalMyDemand" resultMap="BaseResultMap">
+		<bind name="FEEDBACKED" value="@com.hyzs.cidyth.common.enums.DemandStatus@FEEDBACKED.name()" />
+		select * from t_demand where lrry = #{lrry} and qszt != #{FEEDBACKED}
+	</select>
+	
+	<select id="listPersonalHandleDemand" resultMap="BaseResultMap">
+		<bind name="INIT" value="@com.hyzs.cidyth.common.enums.DemandStatus@INIT.name()" />
+		<bind name="WAIT_FOR_SIGN" value="@com.hyzs.cidyth.common.enums.DemandFlowStepStatus@WAIT_FOR_SIGN.name()" />
+		select * from t_demand where find_in_set(#{lrry}, zpld) and qszt = #{INIT}
+			or id in (select xqid from t_demand_flow_his where qszt = #{WAIT_FOR_SIGN} and jsrybh = #{lrry}
+		)	
+	</select>
+	
+	<select id="listPersonalMonthFeedBacked" resultType="com.hyzs.cidyth.module.personal.vo.PersonalDemandVO">
+		select 
+			main_demand.id,
+			main_demand.qqsj,
+			main_demand.xqmc,
+			main_demand.xqnr,
+			foreign_clue_appraise.pffz,
+			foreign_clue_appraise.pfnr,
+			foreign_clue.fkrq
+		from t_demand main_demand
+			left join t_demand_clue foreign_demand_clue on foreign_demand_clue.demand_id = main_demand.id
+			left join t_clue foreign_clue on foreign_clue.id = foreign_demand_clue.clue_id
+			left join t_clue_appraise foreign_clue_appraise on foreign_clue_appraise.clue_id = foreign_clue.id
+		where 
+			foreign_clue.lrry = #{lrry} 
+			and fkrq between STR_TO_DATE(#{startCreateTime},'%Y-%m-%d %H:%i:%s') and STR_TO_DATE(#{endCreateTime},'%Y-%m-%d %H:%i:%s') 
+			
+	</select>
+
+	<select id="listExecuteDemand" resultMap="BaseResultMap">
+		<bind name="INIT" value="@com.hyzs.cidyth.common.enums.DemandStatus@INIT.name()" />
+		<bind name="ALLOCATED" value="@com.hyzs.cidyth.common.enums.DemandStatus@ALLOCATED.name()" />
+		select * from t_demand where ajbh = #{ajbh} and jsdwbh = #{jsdwbh} and qszt != #{INIT} and qszt != #{ALLOCATED}
+	</select>
+
+	<select id="checkDemandInfoExists" resultMap="BaseResultMap">
+		select * from t_demand where ajbh != #{ajbh} and xqlx = #{xqlx} and xqnr = #{xqnr}
+	</select>
+
+	<select id="waitHandler" resultType="Map">
+		<bind name="INIT" value="@com.hyzs.cidyth.common.enums.DemandStatus@INIT.name()" />
+		<bind name="ALLOCATED" value="@com.hyzs.cidyth.common.enums.DemandStatus@ALLOCATED.name()" />
+		<bind name="SIGNED" value="@com.hyzs.cidyth.common.enums.DemandStatus@SIGNED.name()" />
+		select qszt, count(*) qszt_count from t_demand where qszt in (#{INIT}, #{ALLOCATED}, #{SIGNED}) group by qszt
+	</select>
+
+	<select id="countByDemandInit" resultType="Integer">
+		<bind name="INIT" value="@com.hyzs.cidyth.common.enums.DemandStatus@INIT.name()" />
+		select count(*) from t_demand where qszt = #{INIT} and FIND_IN_SET(#{account}, zpld)
+	</select>
+
+	<select id="myAllocate" resultMap="BaseResultMap">
+		<bind name="INIT" value="@com.hyzs.cidyth.common.enums.DemandStatus@INIT.name()" />
+		select * from t_demand where qszt =  #{INIT} and FIND_IN_SET(#{account}, zpld)
+	</select>
+</mapper>

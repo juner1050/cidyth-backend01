@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="cidyth-case" defaultModelType="flat">
+		<property name="javaFileEncoding" value="UTF-8" />
+		<plugin type="com.hyzs.psd.gafa.daf.mybatis.tk.generator.MapperPlugin">
+			<property name="mappers"
+				value="com.hyzs.psd.gafa.daf.mybatis.tk.common.Mapper" />
+			<!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+			<property name="caseSensitive" value="true" />
+		</plugin>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.1.103:3306/cid_new?useUnicode=true&amp;characterEncoding=UTF-8"
+			userId="root" password="1234">
+		</jdbcConnection>
+
+		<!-- 生成Entity类的位置 -->
+		<javaModelGenerator targetPackage="com.hyzs.cidyth.module.analysis.entity"
+			targetProject="cidyth-module/src/main/java" />
+
+		<!-- mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.hyzs.cidyth.module.analysis.dao"
+			targetProject="cidyth-module/src/main/java" />
+
+		<!-- mapper接口生成的位置 -->
+		<javaClientGenerator targetPackage="com.hyzs.cidyth.module.analysis.dao"
+			targetProject="cidyth-module/src/main/java" type="XMLMAPPER" />
+
+		<!-- 分析线索 -->
+		<table schema="cid_new" tableName="t_analysis_clue" domainObjectName="AnalysisClue"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+		<!-- 分析线索节点 -->
+		<table schema="cid_new" tableName="t_analysis_node" domainObjectName="AnalysisNode"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+	</context>
+
+
+</generatorConfiguration>

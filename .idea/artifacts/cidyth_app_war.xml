@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cidyth-app:war">
+    <output-path>$PROJECT_DIR$/cidyth-app/target</output-path>
+    <root id="archive" name="cid-app.war">
+      <element id="artifact" artifact-name="cidyth-app:war exploded" />
+    </root>
+  </artifact>
+</component>

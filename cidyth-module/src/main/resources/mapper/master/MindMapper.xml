@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.mind.dao.MindMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.mind.entity.Mind">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ajbh" jdbcType="VARCHAR" property="ajbh" />
+    <result column="source_id" jdbcType="VARCHAR" property="sourceId" />
+    <result column="target_id" jdbcType="VARCHAR" property="targetId" />
+    <result column="smbz" jdbcType="VARCHAR" property="smbz" />
+    <result column="lrry" jdbcType="INTEGER" property="lrry" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgry" jdbcType="INTEGER" property="xgry" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, ajbh, source_id, target_id, smbz, lrry, lrsj, xgry, xgsj
+  </sql>
+</mapper>

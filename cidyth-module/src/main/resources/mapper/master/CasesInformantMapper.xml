@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.CasesInformantMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.CasesInformant">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="systeMid" jdbcType="VARCHAR" property="systemid" />
+    <result column="rybh" jdbcType="VARCHAR" property="rybh" />
+    <result column="zzdxzqh" jdbcType="VARCHAR" property="zzdxzqh" />
+    <result column="cyM" jdbcType="VARCHAR" property="cym" />
+    <result column="hyzk" jdbcType="VARCHAR" property="hyzk" />
+    <result column="sf" jdbcType="VARCHAR" property="sf" />
+    <result column="xrtssf" jdbcType="VARCHAR" property="xrtssf" />
+    <result column="xrzhiy" jdbcType="VARCHAR" property="xrzhiy" />
+    <result column="brdwqh" jdbcType="VARCHAR" property="brdwqh" />
+    <result column="jzdxzqh" jdbcType="VARCHAR" property="jzdxzqh" />
+    <result column="xM" jdbcType="VARCHAR" property="xm" />
+    <result column="csrq" jdbcType="TIMESTAMP" property="csrq" />
+    <result column="xb" jdbcType="VARCHAR" property="xb" />
+    <result column="zjzl" jdbcType="VARCHAR" property="zjzl" />
+    <result column="zjhM" jdbcType="VARCHAR" property="zjhm" />
+    <result column="gj" jdbcType="VARCHAR" property="gj" />
+    <result column="ywx" jdbcType="VARCHAR" property="ywx" />
+    <result column="ywM" jdbcType="VARCHAR" property="ywm" />
+    <result column="jiguan" jdbcType="VARCHAR" property="jiguan" />
+    <result column="Mz" jdbcType="VARCHAR" property="mz" />
+    <result column="bM" jdbcType="VARCHAR" property="bm" />
+    <result column="bynaMe" jdbcType="VARCHAR" property="byname" />
+    <result column="qtzjlx1" jdbcType="VARCHAR" property="qtzjlx1" />
+    <result column="qtzjhM1" jdbcType="VARCHAR" property="qtzjhm1" />
+    <result column="hjdz" jdbcType="VARCHAR" property="hjdz" />
+    <result column="xzqh" jdbcType="VARCHAR" property="xzqh" />
+    <result column="lxdh" jdbcType="VARCHAR" property="lxdh" />
+    <result column="gzdw" jdbcType="VARCHAR" property="gzdw" />
+    <result column="rywhcd" jdbcType="VARCHAR" property="rywhcd" />
+    <result column="jzyy" jdbcType="VARCHAR" property="jzyy" />
+    <result column="tlsy" jdbcType="VARCHAR" property="tlsy" />
+    <result column="lhyy" jdbcType="VARCHAR" property="lhyy" />
+    <result column="ljd" jdbcType="VARCHAR" property="ljd" />
+    <result column="qzzlqz" jdbcType="VARCHAR" property="qzzlqz" />
+    <result column="qzhM" jdbcType="VARCHAR" property="qzhm" />
+    <result column="qzqfd" jdbcType="VARCHAR" property="qzqfd" />
+    <result column="xxdzMs" jdbcType="VARCHAR" property="xxdzms" />
+    <result column="lxrxM" jdbcType="VARCHAR" property="lxrxm" />
+    <result column="lxrdh" jdbcType="VARCHAR" property="lxrdh" />
+    <result column="jdrMc" jdbcType="VARCHAR" property="jdrmc" />
+    <result column="sfzy" jdbcType="VARCHAR" property="sfzy" />
+    <result column="rylx" jdbcType="VARCHAR" property="rylx" />
+    <result column="rystate" jdbcType="VARCHAR" property="rystate" />
+    <result column="ryshxs" jdbcType="VARCHAR" property="ryshxs" />
+    <result column="rsshcd" jdbcType="VARCHAR" property="rsshcd" />
+    <result column="sazz" jdbcType="VARCHAR" property="sazz" />
+    <result column="ssje" jdbcType="VARCHAR" property="ssje" />
+    <result column="srwhss" jdbcType="VARCHAR" property="srwhss" />
+    <result column="qfqk" jdbcType="VARCHAR" property="qfqk" />
+    <result column="swqk" jdbcType="VARCHAR" property="swqk" />
+    <result column="bz" jdbcType="VARCHAR" property="bz" />
+    <result column="ryly" jdbcType="VARCHAR" property="ryly" />
+    <result column="ztid" jdbcType="VARCHAR" property="ztid" />
+    <result column="lrdw" jdbcType="VARCHAR" property="lrdw" />
+    <result column="lrsj" jdbcType="VARCHAR" property="lrsj" />
+    <result column="lrr" jdbcType="VARCHAR" property="lrr" />
+    <result column="departMentcode" jdbcType="VARCHAR" property="departmentcode" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="createdtiMe" jdbcType="VARCHAR" property="createdtime" />
+    <result column="securitygrade" jdbcType="VARCHAR" property="securitygrade" />
+    <result column="reservation01" jdbcType="VARCHAR" property="reservation01" />
+    <result column="reservation02" jdbcType="VARCHAR" property="reservation02" />
+    <result column="reservation03" jdbcType="VARCHAR" property="reservation03" />
+    <result column="reservation04" jdbcType="VARCHAR" property="reservation04" />
+    <result column="reservation05" jdbcType="VARCHAR" property="reservation05" />
+    <result column="reservation06" jdbcType="VARCHAR" property="reservation06" />
+    <result column="reservation07" jdbcType="VARCHAR" property="reservation07" />
+    <result column="reservation08" jdbcType="VARCHAR" property="reservation08" />
+    <result column="reservation09" jdbcType="VARCHAR" property="reservation09" />
+    <result column="reservation10" jdbcType="VARCHAR" property="reservation10" />
+    <result column="lastupdatedby" jdbcType="VARCHAR" property="lastupdatedby" />
+    <result column="lastupdatedtiMe" jdbcType="VARCHAR" property="lastupdatedtime" />
+    <result column="refreshtiMe" jdbcType="VARCHAR" property="refreshtime" />
+    <result column="uploadflag" jdbcType="VARCHAR" property="uploadflag" />
+    <result column="downloadflag" jdbcType="VARCHAR" property="downloadflag" />
+    <result column="deleteflag" jdbcType="VARCHAR" property="deleteflag" />
+    <result column="reservation11" jdbcType="VARCHAR" property="reservation11" />
+    <result column="reservation12" jdbcType="VARCHAR" property="reservation12" />
+    <result column="reservation13" jdbcType="VARCHAR" property="reservation13" />
+    <result column="reservation14" jdbcType="VARCHAR" property="reservation14" />
+    <result column="reservation15" jdbcType="VARCHAR" property="reservation15" />
+    <result column="reservation16" jdbcType="VARCHAR" property="reservation16" />
+    <result column="reservation17" jdbcType="VARCHAR" property="reservation17" />
+    <result column="reservation18" jdbcType="VARCHAR" property="reservation18" />
+    <result column="reservation19" jdbcType="VARCHAR" property="reservation19" />
+    <result column="reservation20" jdbcType="VARCHAR" property="reservation20" />
+    <result column="datastate" jdbcType="VARCHAR" property="datastate" />
+    <result column="datacheck" jdbcType="VARCHAR" property="datacheck" />
+    <result column="queryid" jdbcType="VARCHAR" property="queryid" />
+    <result column="rkdjsj" jdbcType="VARCHAR" property="rkdjsj" />
+    <result column="rkgxsj" jdbcType="VARCHAR" property="rkgxsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, systeMid, rybh, zzdxzqh, cyM, hyzk, sf, xrtssf, xrzhiy, brdwqh, jzdxzqh, xM, 
+    csrq, xb, zjzl, zjhM, gj, ywx, ywM, jiguan, Mz, bM, bynaMe, qtzjlx1, qtzjhM1, hjdz, 
+    xzqh, lxdh, gzdw, rywhcd, jzyy, tlsy, lhyy, ljd, qzzlqz, qzhM, qzqfd, xxdzMs, lxrxM, 
+    lxrdh, jdrMc, sfzy, rylx, rystate, ryshxs, rsshcd, sazz, ssje, srwhss, qfqk, swqk, 
+    bz, ryly, ztid, lrdw, lrsj, lrr, departMentcode, creator, createdtiMe, securitygrade, 
+    reservation01, reservation02, reservation03, reservation04, reservation05, reservation06, 
+    reservation07, reservation08, reservation09, reservation10, lastupdatedby, lastupdatedtiMe, 
+    refreshtiMe, uploadflag, downloadflag, deleteflag, reservation11, reservation12, 
+    reservation13, reservation14, reservation15, reservation16, reservation17, reservation18, 
+    reservation19, reservation20, datastate, datacheck, queryid, rkdjsj, rkgxsj
+  </sql>
+</mapper>

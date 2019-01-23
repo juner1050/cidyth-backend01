@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.integral.dao.IntegralTitleMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.integral.entity.IntegralTitle">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title_type" jdbcType="VARCHAR" property="titleType" />
+    <result column="upper_limit" jdbcType="FLOAT" property="upperLimit" />
+    <result column="lower_limit" jdbcType="FLOAT" property="lowerLimit" />
+    <result column="smbz" jdbcType="VARCHAR" property="smbz" />
+    <result column="lrry" jdbcType="VARCHAR" property="lrry" />
+    <result column="lrsj" jdbcType="TIMESTAMP" property="lrsj" />
+    <result column="xgry" jdbcType="VARCHAR" property="xgry" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+    <result column="lrrymc" jdbcType="VARCHAR" property="lrrymc" />
+    <result column="xgrymc" jdbcType="VARCHAR" property="xgrymc" />
+    <result column="quota" jdbcType="INTEGER" property="quota" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, name, title_type, upper_limit, lower_limit, smbz, lrry, lrsj, xgry, xgsj, lrrymc, 
+    xgrymc, quota
+  </sql>
+</mapper>

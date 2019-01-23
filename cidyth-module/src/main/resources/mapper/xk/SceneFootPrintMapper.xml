@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.SceneFootPrintCidMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.SceneFootPrintCid">
+    <!--
+      WARNING - @mbg.generated
+    -->
+      <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="XXID" jdbcType="VARCHAR" property="xxid" />
+    <result column="ZPID" jdbcType="VARCHAR" property="zpid" />
+    <result column="XH" jdbcType="INTEGER" property="xh" />
+    <result column="ZJLX" jdbcType="VARCHAR" property="zjlx" />
+    <result column="YLBW" jdbcType="VARCHAR" property="ylbw" />
+    <result column="TQFF" jdbcType="VARCHAR" property="tqff" />
+    <result column="TQR" jdbcType="VARCHAR" property="tqr" />
+    <result column="TQRQ" jdbcType="TIMESTAMP" property="tqrq" />
+    <result column="CRZWXT" jdbcType="VARCHAR" property="crzwxt" />
+    <result column="SFLRXCTQ" jdbcType="VARCHAR" property="sflrxctq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+      ID, XXID, ZPID, XH, ZJLX, YLBW, TQFF, TQR, TQRQ, CRZWXT, SFLRXCTQ
+  </sql>
+  
+  <select id="listFootPrintByAjbh" resultMap="BaseResultMap">
+  	SELECT * FROM XK_ZJHJ WHERE XXID = (
+		SELECT ID FROM XK_XCJBXX WHERE AJID = (
+			SELECT ID FROM XK_AJXX WHERE AJBH = #{AJBH} AND rownum = 1
+		)
+  	)
+  </select>
+    <select id="countByAjbh" resultType="Integer">
+        SELECT count(*) FROM XK_ZJHJ WHERE XXID = (
+            SELECT ID FROM XK_XCJBXX WHERE AJID = (
+              SELECT ID FROM XK_AJXX WHERE AJBH = #{AJBH}
+            )
+        )
+    </select>
+</mapper>

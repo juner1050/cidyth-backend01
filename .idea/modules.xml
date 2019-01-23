@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cidyth-app/cidyth-app.iml" filepath="$PROJECT_DIR$/cidyth-app/cidyth-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cidyth-backend.iml" filepath="$PROJECT_DIR$/.idea/cidyth-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cidyth-common/cidyth-common.iml" filepath="$PROJECT_DIR$/cidyth-common/cidyth-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cidyth-communicate/cidyth-communicate.iml" filepath="$PROJECT_DIR$/cidyth-communicate/cidyth-communicate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cidyth-core/cidyth-core.iml" filepath="$PROJECT_DIR$/cidyth-core/cidyth-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cidyth-module/cidyth-module.iml" filepath="$PROJECT_DIR$/cidyth-module/cidyth-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cidyth-web-portal/cidyth-web-portal.iml" filepath="$PROJECT_DIR$/cidyth-web-portal/cidyth-web-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cidyth-websocket/cidyth-websocket.iml" filepath="$PROJECT_DIR$/cidyth-websocket/cidyth-websocket.iml" />
+    </modules>
+  </component>
+</project>

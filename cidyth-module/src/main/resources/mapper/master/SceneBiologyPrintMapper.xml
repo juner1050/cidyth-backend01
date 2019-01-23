@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyzs.cidyth.module.base.dao.SceneBiologyPrintMapper">
+  <resultMap id="BaseResultMap" type="com.hyzs.cidyth.module.base.entity.SceneBiologyPrint">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="SWID" jdbcType="INTEGER" property="swid" />
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="AJBH" jdbcType="VARCHAR" property="ajbh" />
+    <result column="XXID" jdbcType="VARCHAR" property="xxid" />
+    <result column="XH" jdbcType="INTEGER" property="xh" />
+    <result column="LX" jdbcType="VARCHAR" property="lx" />
+    <result column="JCMS" jdbcType="VARCHAR" property="jcms" />
+    <result column="YLBW" jdbcType="VARCHAR" property="ylbw" />
+    <result column="TQFF" jdbcType="VARCHAR" property="tqff" />
+    <result column="TQR" jdbcType="VARCHAR" property="tqr" />
+    <result column="TQRQ" jdbcType="TIMESTAMP" property="tqrq" />
+    <result column="CRDNAXT" jdbcType="VARCHAR" property="crdnaxt" />
+    <result column="SFLRXCTQ" jdbcType="VARCHAR" property="sflrxctq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    SWID, ID, AJBH, XXID, XH, LX, JCMS, YLBW, TQFF, TQR, TQRQ, CRDNAXT, SFLRXCTQ
+  </sql>
+</mapper>
