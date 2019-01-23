@@ -30,6 +30,7 @@ public class Application extends SpringBootServletInitializer {
 
 		ApplicationContext ctx = sa.run(Application.class, args);
 		System.out.println("=======================cidyth-web-portal has been started.===========================");
-		
+		System.out.println("=======================cidyth-web-portal has been started测试01.===========================");
+
 	}
 }
